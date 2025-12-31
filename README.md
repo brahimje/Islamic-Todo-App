@@ -2,6 +2,10 @@
 
 A comprehensive Islamic productivity app that helps Muslims organize their daily prayers, tasks, and spiritual activities. Built with Flutter for cross-platform support.
 
+---
+**Note:** This is version 1.0. The app is still under active development—many features and fixes are planned for future updates. Core functions are working, and releases will be pushed as improvements are made.
+---
+
 ## Features
 
 - **Prayer Management**: Track daily prayers with accurate Islamic prayer times
