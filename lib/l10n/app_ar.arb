@@ -1,0 +1,1341 @@
+{
+  "@@locale": "ar",
+  "@@author": "Islamic Todo Team",
+  "@@version": "1.0.0",
+
+  "appName": "مهام إسلامية",
+  "@appName": {
+    "description": "اسم التطبيق"
+  },
+
+  "appTagline": "وفق بين حياتك الروحية والعملية",
+  "@appTagline": {
+    "description": "شعار التطبيق"
+  },
+
+  "navHome": "الرئيسية",
+  "@navHome": {
+    "description": "تبويب الصفحة الرئيسية"
+  },
+
+  "navCalendar": "التقويم",
+  "@navCalendar": {
+    "description": "تبويب التقويم"
+  },
+
+  "navProgress": "التقدم",
+  "@navProgress": {
+    "description": "تبويب التقدم"
+  },
+
+  "navChallenges": "التحديات",
+  "@navChallenges": {
+    "description": "تبويب الأذكار والتحديات"
+  },
+
+  "navSettings": "الإعدادات",
+  "@navSettings": {
+    "description": "تبويب الإعدادات"
+  },
+
+  "fajr": "الفجر",
+  "@fajr": {
+    "description": "اسم صلاة الفجر"
+  },
+
+  "sunrise": "الشروق",
+  "@sunrise": {
+    "description": "وقت الشروق"
+  },
+
+  "dhuhr": "الظهر",
+  "@dhuhr": {
+    "description": "اسم صلاة الظهر"
+  },
+
+  "asr": "العصر",
+  "@asr": {
+    "description": "اسم صلاة العصر"
+  },
+
+  "maghrib": "المغرب",
+  "@maghrib": {
+    "description": "اسم صلاة المغرب"
+  },
+
+  "isha": "العشاء",
+  "@isha": {
+    "description": "اسم صلاة العشاء"
+  },
+
+  "tahajjud": "التهجد",
+  "@tahajjud": {
+    "description": "اسم صلاة التهجد"
+  },
+
+  "doha": "الضحى",
+  "@doha": {
+    "description": "اسم صلاة الضحى"
+  },
+
+  "ishraq": "الإشراق",
+  "@ishraq": {
+    "description": "اسم صلاة الإشراق"
+  },
+
+  "awwabin": "الأوابين",
+  "@awwabin": {
+    "description": "اسم صلاة الأوابين"
+  },
+
+  "witr": "الوتر",
+  "@witr": {
+    "description": "اسم صلاة الوتر"
+  },
+
+  "tahiyyatMasjid": "تحية المسجد",
+  "@tahiyyatMasjid": {
+    "description": "اسم صلاة تحية المسجد"
+  },
+
+  "nextPrayer": "الصلاة القادمة",
+  "@nextPrayer": {
+    "description": "تسمية الصلاة القادمة على الصفحة الرئيسية"
+  },
+
+  "todaysPrayers": "صلوات اليوم",
+  "@todaysPrayers": {
+    "description": "قسم صلوات اليوم"
+  },
+
+  "todaysTasks": "مهام اليوم",
+  "@todaysTasks": {
+    "description": "قسم مهام اليوم"
+  },
+
+  "addTask": "إضافة مهمة",
+  "@addTask": {
+    "description": "تسمية زر إضافة مهمة"
+  },
+
+  "dailyQuote": "الإلهام اليومي",
+  "@dailyQuote": {
+    "description": "قسم الآية والحديث اليومي"
+  },
+
+  "taskTitle": "عنوان المهمة",
+  "@taskTitle": {
+    "description": "تسمية حقل عنوان المهمة"
+  },
+
+  "taskDescription": "الوصف (اختياري)",
+  "@taskDescription": {
+    "description": "تسمية حقل وصف المهمة"
+  },
+
+  "taskDeadline": "الموعد النهائي",
+  "@taskDeadline": {
+    "description": "تسمية حقل الموعد النهائي"
+  },
+
+  "taskPriority": "الأولوية",
+  "@taskPriority": {
+    "description": "تسمية حقل الأولوية"
+  },
+
+  "taskCategory": "الفئة",
+  "@taskCategory": {
+    "description": "تسمية حقل الفئة"
+  },
+
+  "saveTask": "حفظ المهمة",
+  "@saveTask": {
+    "description": "تسمية زر حفظ المهمة"
+  },
+
+  "deleteTask": "حذف المهمة",
+  "@deleteTask": {
+    "description": "إجراء حذف المهمة"
+  },
+
+  "editTask": "تعديل المهمة",
+  "@editTask": {
+    "description": "إجراء تعديل المهمة"
+  },
+
+  "noTasks": "لا توجد مهام لهذا اليوم",
+  "@noTasks": {
+    "description": "رسالة حالة المهام الفارغة"
+  },
+
+  "allTasksCompleted": "تمت جميع المهام! 🎉",
+  "@allTasksCompleted": {
+    "description": "رسالة النجاح عند إكمال جميع المهام"
+  },
+
+  "priorityHigh": "عالية",
+  "@priorityHigh": {
+    "description": "مستوى الأولوية العالي"
+  },
+
+  "priorityMedium": "متوسطة",
+  "@priorityMedium": {
+    "description": "مستوى الأولوية المتوسط"
+  },
+
+  "priorityLow": "منخفضة",
+  "@priorityLow": {
+    "description": "مستوى الأولوية المنخفض"
+  },
+
+  "categoryWork": "العمل",
+  "@categoryWork": {
+    "description": "فئة مهام العمل"
+  },
+
+  "categoryPersonal": "شخصي",
+  "@categoryPersonal": {
+    "description": "فئة المهام الشخصية"
+  },
+
+  "categoryFamily": "عائلي",
+  "@categoryFamily": {
+    "description": "فئة مهام العائلة"
+  },
+
+  "categoryHealth": "الصحة",
+  "@categoryHealth": {
+    "description": "فئة مهام الصحة"
+  },
+
+  "categoryLearning": "التعلم",
+  "@categoryLearning": {
+    "description": "فئة مهام التعلم"
+  },
+
+  "categoryOther": "أخرى",
+  "@categoryOther": {
+    "description": "فئة المهام الأخرى"
+  },
+
+  "dailyView": "يومي",
+  "@dailyView": {
+    "description": "عرض التقويم اليومي"
+  },
+
+  "weeklyView": "أسبوعي",
+  "@weeklyView": {
+    "description": "عرض التقويم الأسبوعي"
+  },
+
+  "monthlyView": "شهري",
+  "@monthlyView": {
+    "description": "عرض التقويم الشهري"
+  },
+
+  "today": "اليوم",
+  "@today": {
+    "description": "تسمية اليوم"
+  },
+
+  "progressTitle": "التقدم والإحصائيات",
+  "@progressTitle": {
+    "description": "عنوان شاشة التقدم"
+  },
+
+  "currentStreak": "السلسلة الحالية",
+  "@currentStreak": {
+    "description": "عداد السلسلة الحالي"
+  },
+
+  "prayersCompleted": "الصلوات المنجزة",
+  "@prayersCompleted": {
+    "description": "إحصائية الصلوات المنجزة"
+  },
+
+  "tasksCompleted": "المهام المنجزة",
+  "@tasksCompleted": {
+    "description": "إحصائية المهام المنجزة"
+  },
+
+  "thisWeek": "هذا الأسبوع",
+  "@thisWeek": {
+    "description": "تسمية فترة هذا الأسبوع"
+  },
+
+  "thisMonth": "هذا الشهر",
+  "@thisMonth": {
+    "description": "تسمية فترة هذا الشهر"
+  },
+
+  "achievements": "الإنجازات",
+  "@achievements": {
+    "description": "قسم الإنجازات"
+  },
+
+  "settingsTitle": "الإعدادات",
+  "@settingsTitle": {
+    "description": "عنوان شاشة الإعدادات"
+  },
+
+  "prayerSettings": "إعدادات الصلاة",
+  "@prayerSettings": {
+    "description": "قسم إعدادات الصلاة"
+  },
+
+  "notificationSettings": "إعدادات الإشعارات",
+  "@notificationSettings": {
+    "description": "قسم إعدادات الإشعارات"
+  },
+
+  "locationSettings": "الموقع",
+  "@locationSettings": {
+    "description": "قسم إعدادات الموقع"
+  },
+
+  "calculationMethod": "طريقة الحساب",
+  "@calculationMethod": {
+    "description": "إعداد طريقة حساب أوقات الصلاة"
+  },
+
+  "language": "اللغة",
+  "@language": {
+    "description": "إعداد اللغة"
+  },
+
+  "about": "حول التطبيق",
+  "@about": {
+    "description": "قسم حول التطبيق"
+  },
+
+  "version": "الإصدار",
+  "@version": {
+    "description": "تسمية الإصدار"
+  },
+
+  "enableNotifications": "تفعيل الإشعارات",
+  "@enableNotifications": {
+    "description": "إعداد تفعيل الإشعارات"
+  },
+
+  "prayerReminder": "تنبيه الصلاة",
+  "@prayerReminder": {
+    "description": "نوع إشعار تنبيه الصلاة"
+  },
+
+  "taskReminder": "تنبيه المهمة",
+  "@taskReminder": {
+    "description": "نوع إشعار تنبيه المهمة"
+  },
+
+  "reminderTime": "ذكرني قبل",
+  "@reminderTime": {
+    "description": "تسمية إعداد وقت التنبيه"
+  },
+
+  "minutes": "دقائق",
+  "@minutes": {
+    "description": "وحدة الدقائق"
+  },
+
+  "save": "حفظ",
+  "@save": {
+    "description": "تسمية زر الحفظ"
+  },
+
+  "cancel": "إلغاء",
+  "@cancel": {
+    "description": "تسمية زر الإلغاء"
+  },
+
+  "delete": "حذف",
+  "@delete": {
+    "description": "تسمية زر الحذف"
+  },
+
+  "edit": "تعديل",
+  "@edit": {
+    "description": "تسمية زر التعديل"
+  },
+
+  "done": "تم",
+  "@done": {
+    "description": "تسمية زر التم"
+  },
+
+  "confirm": "تأكيد",
+  "@confirm": {
+    "description": "تسمية زر التأكيد"
+  },
+
+  "ok": "حسناً",
+  "@ok": {
+    "description": "تسمية زر حسناً"
+  },
+
+  "inTime": "في",
+  "@inTime": {
+    "description": "حرف الجر الزمني"
+  },
+
+  "hours": "ساعات",
+  "@hours": {
+    "description": "وحدة الساعات"
+  },
+
+  "mins": "دقائق",
+  "@mins": {
+    "description": "الشكل المختصر للدقائق"
+  },
+
+  "days": "أيام",
+  "@days": {
+    "description": "وحدة الأيام"
+  },
+
+  "noData": "لا توجد بيانات متاحة",
+  "@noData": {
+    "description": "رسالة حالة عدم وجود بيانات"
+  },
+
+  "loading": "جاري التحميل...",
+  "@loading": {
+    "description": "نص مؤشر التحميل"
+  },
+
+  "error": "حدث خطأ ما",
+  "@error": {
+    "description": "رسالة الخطأ"
+  },
+
+  "retry": "حاول مرة أخرى",
+  "@retry": {
+    "description": "تسمية زر إعادة المحاولة"
+  },
+
+  "taskAdded": "تمت إضافة المهمة بنجاح",
+  "@taskAdded": {
+    "description": "رسالة نجاح إضافة المهمة"
+  },
+
+  "taskUpdated": "تم تحديث المهمة بنجاح",
+  "@taskUpdated": {
+    "description": "رسالة نجاح تحديث المهمة"
+  },
+
+  "taskDeleted": "تم حذف المهمة",
+  "@taskDeleted": {
+    "description": "رسالة نجاح حذف المهمة"
+  },
+
+  "prayerMarked": "تم تحديد الصلاة كمنجزة",
+  "@prayerMarked": {
+    "description": "رسالة نجاح تحديد الصلاة"
+  },
+
+  "settingsSaved": "تم حفظ الإعدادات",
+  "@settingsSaved": {
+    "description": "رسالة نجاح حفظ الإعدادات"
+  },
+
+  "skip": "تخطي",
+  "@skip": {
+    "description": "إجراء تخطي للمهام"
+  },
+
+  "archive": "أرشفة",
+  "@archive": {
+    "description": "إجراء أرشفة المهام"
+  },
+
+  "deleteTaskConfirm": "حذف المهمة؟",
+  "@deleteTaskConfirm": {
+    "description": "عنوان حوار تأكيد حذف المهمة"
+  },
+
+  "deleteTaskMessage": "هل أنت متأكد من رغبتك في حذف هذه المهمة؟",
+  "@deleteTaskMessage": {
+    "description": "رسالة تأكيد حذف المهمة"
+  },
+
+  "taskTitleEmpty": "يرجى إدخال عنوان المهمة",
+  "@taskTitleEmpty": {
+    "description": "رسالة خطأ التحقق عند ترك عنوان المهمة فارغاً"
+  },
+
+  "taskTitleHint": "مثلاً: اقرأ سورة الكهف",
+  "@taskTitleHint": {
+    "description": "نص المساعدة لإدخال عنوان المهمة"
+  },
+
+  "taskDescriptionHint": "ماذا تحتاج إلى فعله؟",
+  "@taskDescriptionHint": {
+    "description": "نص المساعدة لإدخال وصف المهمة"
+  },
+
+  "addDetailsHint": "أضف التفاصيل...",
+  "@addDetailsHint": {
+    "description": "نص المساعدة لإضافة تفاصيل المهمة"
+  },
+
+  "todaysSchedule": "جدول اليوم",
+  "@todaysSchedule": {
+    "description": "عنوان جدول الصلوات"
+  },
+
+  "next": "التالي",
+  "@next": {
+    "description": "مؤشر الصلاة التالية"
+  },
+
+  "now": "الآن",
+  "@now": {
+    "description": "مؤشر الوقت الحالي"
+  },
+
+  "qiyamAlLayl": "قيام الليل",
+  "@qiyamAlLayl": {
+    "description": "اسم صلاة الليل"
+  },
+
+  "available": "متاح",
+  "@available": {
+    "description": "حالة متاحة"
+  },
+
+  "tasks": "مهام",
+  "@tasks": {
+    "description": "حالة المهام"
+  },
+
+  "qiyam": "قيام",
+  "@qiyam": {
+    "description": "حالة القيام"
+  },
+
+  "sleep": "النوم",
+  "@sleep": {
+    "description": "مؤشر وقت النوم"
+  },
+
+  "free": "فراغ",
+  "@free": {
+    "description": "مؤشر الوقت الفارغ"
+  },
+
+  "prepTime": "دقيقة تحضير",
+  "@prepTime": {
+    "description": "اختصار وقت تحضير الصلاة"
+  },
+
+  "freeTime": "دقيقة فراغ",
+  "@freeTime": {
+    "description": "اختصار الوقت الفارغ"
+  },
+
+  "recommendedActions": "الإجراءات الموصى بها",
+  "@recommendedActions": {
+    "description": "عنوان قسم الإجراءات الموصى بها"
+  },
+
+  "qiyamQuote": "\"ينزل ربنا تبارك وتعالى كل ليلة إلى السماء الدنيا حين يبقى ثلث الليل الآخر\"",
+  "@qiyamQuote": {
+    "description": "حديث قيام الليل باللغة العربية"
+  },
+
+  "qiyamQuoteTranslation": "ينزل ربنا كل ليلة إلى السماء الدنيا عندما يبقى ثلث الليل الأخير",
+  "@qiyamQuoteTranslation": {
+    "description": "ترجمة حديث قيام الليل"
+  },
+
+  "qiyamQuoteSource": "— صحيح البخاري والمسلم",
+  "@qiyamQuoteSource": {
+    "description": "مصدر حديث قيام الليل"
+  },
+
+  "qiyamRecitation": "اقرأ: تبارك، السجدة، المزمل، أو السور المحفوظة لديك",
+  "@qiyamRecitation": {
+    "description": "السور الموصى بها للتلاوة أثناء قيام الليل"
+  },
+
+  "taskMenuEdit": "تعديل",
+  "@taskMenuEdit": {
+    "description": "عنصر القائمة تعديل المهمة"
+  },
+
+  "taskMenuDelete": "حذف",
+  "@taskMenuDelete": {
+    "description": "عنصر القائمة حذف المهمة"
+  },
+
+  "taskStateDone": "✓ منجزة",
+  "@taskStateDone": {
+    "description": "حالة المهمة المنجزة"
+  },
+
+  "taskStateSkipped": "⊘ مخطي",
+  "@taskStateSkipped": {
+    "description": "حالة المهمة المخطى عنها"
+  },
+
+  "taskStateArchived": "📦 مؤرشفة",
+  "@taskStateArchived": {
+    "description": "حالة المهمة المؤرشفة"
+  },
+
+  "taskStateOverdue": "⚠ متأخرة",
+  "@taskStateOverdue": {
+    "description": "حالة المهمة المتأخرة"
+  },
+
+  "prayerPreparation": "تحضير الصلاة",
+  "@prayerPreparation": {
+    "description": "قسم إعدادات تحضير الصلاة"
+  },
+
+  "prayerPrepDescription": "اضبط وقت التحضير لكل صلاة (يتضمن الوضوء والتنقل إلى المسجد إن لزم الأمر، إلخ)",
+  "@prayerPrepDescription": {
+    "description": "وصف إعدادات تحضير الصلاة"
+  },
+
+  "sleepQiyamAlLayl": "النوم وقيام الليل",
+  "@sleepQiyamAlLayl": {
+    "description": "قسم إعدادات النوم وقيام الليل"
+  },
+
+  "enableNightPrayerCalculation": "تفعيل حساب وقت صلاة الليل",
+  "@enableNightPrayerCalculation": {
+    "description": "تبديل لتفعيل حساب وقت قيام الليل"
+  },
+
+  "qiyamStartTime": "وقت بدء القيام",
+  "@qiyamStartTime": {
+    "description": "وقت بدء قيام الليل"
+  },
+
+  "sleepTime": "وقت النوم المستهدف",
+  "@sleepTime": {
+    "description": "وقت النوم المستهدف"
+  },
+
+  "madhab": "المذهب",
+  "@madhab": {
+    "description": "المدرسة الإسلامية للفكر"
+  },
+
+  "madhab0": "الشافعي والمالكي والحنبلي",
+  "@madhab0": {
+    "description": "خيار المذهب - وقت العصر القياسي"
+  },
+
+  "madhab0Description": "وقت العصر القياسي (الظل مساوٍ للشيء)",
+  "@madhab0Description": {
+    "description": "وصف المذهب 0 (وقت العصر القياسي)"
+  },
+
+  "madhab1": "الحنفي",
+  "@madhab1": {
+    "description": "خيار المذهب - وقت العصر لاحقاً"
+  },
+
+  "madhab1Description": "وقت العصر اللاحق (الظل مساوٍ لمرتين الشيء)",
+  "@madhab1Description": {
+    "description": "وصف المذهب 1 (وقت العصر اللاحق)"
+  },
+
+  "locationTitle": "الموقع",
+  "@locationTitle": {
+    "description": "عنوان إعدادات الموقع"
+  },
+
+  "useCurrentLocation": "استخدم موقعك الحالي",
+  "@useCurrentLocation": {
+    "description": "زر استخدام الموقع الحالي للجهاز"
+  },
+
+  "searchCity": "ابحث عن المدينة...",
+  "@searchCity": {
+    "description": "نص المساعدة لإدخال البحث عن المدينة"
+  },
+
+  "popularCities": "المدن الشهيرة",
+  "@popularCities": {
+    "description": "عنوان قسم المدن الشهيرة"
+  },
+
+  "morningAdhkarTime": "وقت أذكار الصباح",
+  "@morningAdhkarTime": {
+    "description": "إعداد وقت أذكار الصباح"
+  },
+
+  "eveningAdhkarTime": "وقت أذكار المساء",
+  "@eveningAdhkarTime": {
+    "description": "إعداد وقت أذكار المساء"
+  },
+
+  "reminderTimeBeforePrayer": "وقت التذكير قبل الصلاة",
+  "@reminderTimeBeforePrayer": {
+    "description": "عنوان تكوين وقت التذكير"
+  },
+
+  "weekStartsOn": "يبدأ الأسبوع يوم",
+  "@weekStartsOn": {
+    "description": "إعداد يوم بداية الأسبوع"
+  },
+
+  "monday": "الاثنين",
+  "@monday": {
+    "description": "اسم يوم الاثنين"
+  },
+
+  "sunday": "الأحد",
+  "@sunday": {
+    "description": "اسم يوم الأحد"
+  },
+
+  "saturday": "السبت",
+  "@saturday": {
+    "description": "اسم يوم السبت"
+  },
+
+  "backupData": "نسخ احتياطي",
+  "@backupData": {
+    "description": "تسمية زر النسخ الاحتياطي"
+  },
+
+  "backupDataDescription": "تصدير بياناتك إلى ملف",
+  "@backupDataDescription": {
+    "description": "وصف خيار النسخ الاحتياطي"
+  },
+
+  "backupDataTitle": "نسخ احتياطي",
+  "@backupDataTitle": {
+    "description": "عنوان حوار النسخ الاحتياطي"
+  },
+
+  "backupDataMessage": "سيتم تصدير بياناتك إلى ملف JSON يمكنك مشاركته أو حفظه.",
+  "@backupDataMessage": {
+    "description": "رسالة حوار النسخ الاحتياطي"
+  },
+
+  "dataToBackup": "البيانات المراد نسخها احتياطياً:",
+  "@dataToBackup": {
+    "description": "تسمية لاختيار البيانات في حوار النسخ الاحتياطي"
+  },
+
+  "exportShare": "تصدير ومشاركة",
+  "@exportShare": {
+    "description": "تسمية زر التصدير والمشاركة"
+  },
+
+  "restoreData": "استرجاع البيانات",
+  "@restoreData": {
+    "description": "استرجاع البيانات من نسخة احتياطية"
+  },
+
+  "restoreDataDescription": "استيراد البيانات من ملف نسخة احتياطية",
+  "@restoreDataDescription": {
+    "description": "وصف خيار استرجاع البيانات"
+  },
+
+  "restoreDataTitle": "استرجاع البيانات",
+  "@restoreDataTitle": {
+    "description": "عنوان حوار استرجاع البيانات"
+  },
+
+  "restoreDataMessage": "حدد ملف نسخة احتياطية لاستعادتها. سيؤدي هذا إلى إضافة بيانات النسخة الاحتياطية إلى بياناتك الحالية (لن يتم حذف البيانات الموجودة).",
+  "@restoreDataMessage": {
+    "description": "رسالة حوار استرجاع البيانات"
+  },
+
+  "selectFile": "حدد الملف",
+  "@selectFile": {
+    "description": "تسمية زر تحديد الملف"
+  },
+
+  "clearAllData": "مسح كل البيانات",
+  "@clearAllData": {
+    "description": "تسمية زر مسح كل البيانات"
+  },
+
+  "clearAllDataConfirm": "مسح كل البيانات؟",
+  "@clearAllDataConfirm": {
+    "description": "عنوان تأكيد مسح كل البيانات"
+  },
+
+  "clearAllDataMessage": "سيؤدي هذا إلى حذف جميع صلواتك وفي العين ومجموعة الإعدادات الخاصة بك بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+  "@clearAllDataMessage": {
+    "description": "رسالة تحذير مسح كل البيانات"
+  },
+
+  "dataCleared": "تم مسح جميع البيانات",
+  "@dataCleared": {
+    "description": "رسالة النجاح بعد مسح البيانات"
+  },
+
+  "versionNumber": "1.0.0",
+  "@versionNumber": {
+    "description": "رقم إصدار التطبيق"
+  },
+
+  "qiblaDirection": "اتجاه القبلة",
+  "@qiblaDirection": {
+    "description": "إعداد اتجاه القبلة"
+  },
+
+  "calculationMethodTitle": "طريقة الحساب",
+  "@calculationMethodTitle": {
+    "description": "عنوان طريقة حساب أوقات الصلاة"
+  },
+
+  "dailyAdhkar": "الأذكار اليومية",
+  "@dailyAdhkar": {
+    "description": "عنوان قسم الأذكار اليومية"
+  },
+
+  "tasbih": "التسبيح",
+  "@tasbih": {
+    "description": "فئة التسبيح"
+  },
+
+  "adhkar": "الأذكار",
+  "@adhkar": {
+    "description": "فئة الأذكار"
+  },
+
+  "quran": "القرآن الكريم",
+  "@quran": {
+    "description": "فئة القرآن"
+  },
+
+  "todaysProgress": "تقدم اليوم",
+  "@todaysProgress": {
+    "description": "مؤشر تقدم اليوم"
+  },
+
+  "setTarget": "حدد الهدف",
+  "@setTarget": {
+    "description": "زر تحديد الهدف للتحديات"
+  },
+
+  "dailyTasbih": "التسبيح اليومي",
+  "@dailyTasbih": {
+    "description": "قسم التسبيح اليومي"
+  },
+
+  "readQuran": "اقرأ القرآن",
+  "@readQuran": {
+    "description": "مثال على مهمة قراءة القرآن"
+  },
+
+  "updateTask": "تحديث المهمة",
+  "@updateTask": {
+    "description": "تسمية زر تحديث المهمة"
+  },
+
+  "noEventsForThisDay": "لا توجد أحداث في هذا اليوم",
+  "@noEventsForThisDay": {
+    "description": "رسالة الحالة الفارغة ليوم التقويم"
+  },
+
+  "dayDone": "منجز",
+  "@dayDone": {
+    "description": "شارة انتهاء اليوم"
+  },
+
+  "eid": "عيد",
+  "@eid": {
+    "description": "تسمية عيد باللغة العربية"
+  },
+
+  "tapForDetails": "انقر للحصول على التفاصيل والإرشادات",
+  "@tapForDetails": {
+    "description": "نص إرشادي لتفاصيل الحدث"
+  },
+
+  "about": "نبذة",
+  "@about": {
+    "description": "عنوان قسم نبذة"
+  },
+
+  "whatToDo": "ماذا تفعل",
+  "@whatToDo": {
+    "description": "عنوان قسم الإجراءات"
+  },
+
+  "guidanceAccording": "الإرشادات وفقاً ل",
+  "@guidanceAccording": {
+    "description": "نص نسب الإرشادات"
+  },
+
+  "fastingProhibited": "الصيام محظور في هذا اليوم",
+  "@fastingProhibited": {
+    "description": "تحذير حظر الصيام"
+  },
+
+  "sunnahPrayer": "صلاة السنة",
+  "@sunnahPrayer": {
+    "description": "تسمية نوع صلاة السنة"
+  },
+
+  "task": "مهمة",
+  "@task": {
+    "description": "تسمية نوع المهمة"
+  },
+
+  "productivity": "الإنتاجية",
+  "@productivity": {
+    "description": "تسمية مقياس الإنتاجية"
+  },
+
+  "prayerStreak": "سلسلة الصلوات",
+  "@prayerStreak": {
+    "description": "تسمية بطاقة سلسلة الصلوات الصغيرة"
+  },
+
+  "taskStreak": "سلسلة المهام",
+  "@taskStreak": {
+    "description": "تسمية بطاقة سلسلة المهام الصغيرة"
+  },
+
+  "weeklyInsights": "رؤى أسبوعية",
+  "@weeklyInsights": {
+    "description": "عنوان بطاقة الرؤى الأسبوعية"
+  },
+
+  "taskRate": "معدل المهام",
+  "@taskRate": {
+    "description": "تسمية معدل إكمال المهام"
+  },
+
+  "prayerRate": "معدل الصلاة",
+  "@prayerRate": {
+    "description": "تسمية معدل إكمال الصلاة"
+  },
+
+  "bestSlot": "أفضل وقت",
+  "@bestSlot": {
+    "description": "تسمية أفضل وقت للصلاة"
+  },
+
+  "bestDay": "أفضل يوم",
+  "@bestDay": {
+    "description": "تسمية أفضل يوم من الأسبوع"
+  },
+
+  "tasksOf": "من",
+  "@tasksOf": {
+    "description": "حرف جر لعرض عدد المهام"
+  },
+
+  "prayersOf": "من",
+  "@prayersOf": {
+    "description": "حرف جر لعرض عدد الصلوات"
+  },
+
+  "firstLight": "النور الأول",
+  "@firstLight": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "firstLightDesc": "صلِّ 5 صلوات في يوم واحد",
+  "@firstLightDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "onFire": "في النار",
+  "@onFire": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "onFireDesc": "سلسلة صلاة لمدة 7 أيام",
+  "@onFireDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "star": "نجمة",
+  "@star": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "starDesc": "سلسلة صلاة لمدة 30 يوماً",
+  "@starDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "taskmaster": "سيد المهام",
+  "@taskmaster": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "taskmasterDesc": "أكمل 10 مهام",
+  "@taskmasterDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "devoted": "المكرس",
+  "@devoted": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "devotedDesc": "فعّل 3 صلوات نافلة",
+  "@devotedDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "nightOwl": "بومة الليل",
+  "@nightOwl": {
+    "description": "عنوان الإنجاز"
+  },
+
+  "nightOwlDesc": "سلسلة مهام لمدة 7 أيام",
+  "@nightOwlDesc": {
+    "description": "وصف الإنجاز"
+  },
+
+  "nafilaPrayers": "صلوات النافلة",
+  "@nafilaPrayers": {
+    "description": "عنوان قسم صلوات النافلة"
+  },
+
+  "noDailyAdhkarAvailable": "لا توجد أذكار يومية متاحة",
+  "@noDailyAdhkarAvailable": {
+    "description": "رسالة الحالة الفارغة للأذكار اليومية"
+  },
+
+  "dailyAdhkarSection": "الأذكار اليومية",
+  "@dailyAdhkarSection": {
+    "description": "عنوان قسم الأذكار اليومية في التقدم"
+  },
+
+  "dayTimeline": "جدول اليوم",
+  "@dayTimeline": {
+    "description": "تلميح جدول اليوم"
+  },
+
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "تلميح شاشة الإعدادات"
+  },
+
+  "preferences": "التفضيلات",
+  "@preferences": {
+    "description": "قسم إعدادات التفضيلات"
+  },
+
+  "data": "البيانات",
+  "@data": {
+    "description": "قسم إعدادات البيانات"
+  },
+
+  "prayer": "الصلاة",
+  "@prayer": {
+    "description": "عنوان القسم الفرعي للصلاة"
+  },
+
+  "morningAdhkar": "أذكار الصباح",
+  "@morningAdhkar": {
+    "description": "تسمية تبديل أذكار الصباح"
+  },
+
+  "eveningAdhkar": "أذكار المساء",
+  "@eveningAdhkar": {
+    "description": "تسمية تبديل أذكار المساء"
+  },
+
+  "afterPrayerAdhkar": "أذكار ما بعد الصلاة",
+  "@afterPrayerAdhkar": {
+    "description": "تسمية تبديل أذكار ما بعد الصلاة"
+  },
+
+  "sleepAdhkar": "أذكار النوم",
+  "@sleepAdhkar": {
+    "description": "تسمية تبديل أذكار النوم"
+  },
+
+  "nafilaReminders": "تذكيرات النافلة",
+  "@nafilaReminders": {
+    "description": "تبديل تذكيرات صلوات النافلة"
+  },
+
+  "taskReminders": "تذكيرات المهام",
+  "@taskReminders": {
+    "description": "تسمية تبديل تذكيرات المهام"
+  },
+
+  "twentyFourHourFormat": "صيغة 24 ساعة",
+  "@twentyFourHourFormat": {
+    "description": "تبديل صيغة الوقت 24 ساعة"
+  },
+
+  "showCompletedTasks": "عرض المهام المنجزة",
+  "@showCompletedTasks": {
+    "description": "تسمية تبديل عرض المهام المنجزة"
+  },
+
+  "reminded": "دقائق",
+  "@reminded": {
+    "description": "تسمية الدقائق لعرض وقت التذكير"
+  },
+
+  "minBeforePrayer": "دقيقة قبل الصلاة",
+  "@minBeforePrayer": {
+    "description": "تسمية التذكير قبل الصلاة"
+  },
+
+  "dayTimeline": "الجدول الزمني اليومي",
+  "@dayTimeline": {
+    "description": "عنوان شاشة الجدول الزمني"
+  },
+
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "عنوان شاشة الإعدادات"
+  },
+
+  "skipForNow": "تخطي الآن",
+  "@skipForNow": {
+    "description": "زر التخطي للتدريب"
+  },
+
+  "maybeLater": "ربما لاحقاً",
+  "@maybeLater": {
+    "description": "زر ربما لاحقاً للتدريب"
+  },
+
+  "back": "رجوع",
+  "@back": {
+    "description": "تسمية زر الرجوع"
+  },
+
+  "next": "التالي",
+  "@next": {
+    "description": "تسمية زر التالي"
+  },
+
+  "getStarted": "ابدأ الآن",
+  "@getStarted": {
+    "description": "زر البدء للتدريب"
+  },
+
+  "clear": "مسح",
+  "@clear": {
+    "description": "تسمية زر المسح"
+  },
+
+  "nafilaPrayers": "صلوات النافلة",
+  "@nafilaPrayers": {
+    "description": "عنوان شاشة صلوات النافلة"
+  },
+
+  "addTask": "إضافة مهمة",
+  "@addTask": {
+    "description": "تسمية زر إضافة المهمة"
+  },
+
+  "madhab0": "الشافعي والمالكي والحنبلي",
+  "@madhab0": {
+    "description": "الخيار الأول للمذهب"
+  },
+
+  "madhab0Desc": "وقت العصر القياسي (الظل يساوي الجسم)",
+  "@madhab0Desc": {
+    "description": "وصف المذهب الأول"
+  },
+
+  "madhab1": "الحنفي",
+  "@madhab1": {
+    "description": "الخيار الثاني للمذهب"
+  },
+
+  "madhab1Desc": "وقت العصر المتأخر (الظل يساوي ضعف الجسم)",
+  "@madhab1Desc": {
+    "description": "وصف المذهب الثاني"
+  },
+
+  "monday": "الاثنين",
+  "@monday": {
+    "description": "اسم يوم الاثنين"
+  },
+
+  "sunday": "الأحد",
+  "@sunday": {
+    "description": "اسم يوم الأحد"
+  },
+
+  "saturday": "السبت",
+  "@saturday": {
+    "description": "اسم يوم السبت"
+  },
+
+  "clearAllData": "حذف كل البيانات؟",
+  "@clearAllData": {
+    "description": "عنوان نافذة حذف البيانات"
+  },
+
+  "cancel": "إلغاء",
+  "@cancel": {
+    "description": "تسمية زر الإلغاء"
+  },
+
+  "clearDataMessage": "سيؤدي هذا إلى حذف جميع مهامك وصلواتك وإعداداتك. لا يمكن التراجع عن هذا الإجراء.",
+  "@clearDataMessage": {
+    "description": "رسالة تأكيد حذف البيانات"
+  },
+
+  "allDataCleared": "تم حذف جميع البيانات",
+  "@allDataCleared": {
+    "description": "رسالة نجاح حذف البيانات"
+  },
+
+  "backupData": "نسخ احتياطي للبيانات",
+  "@backupData": {
+    "description": "عنوان نافذة النسخ الاحتياطي"
+  },
+
+  "backupDescription": "سيؤدي هذا إلى تصدير بيانات إلى ملف JSON يمكنك مشاركته أو حفظه.",
+  "@backupDescription": {
+    "description": "وصف النسخ الاحتياطي"
+  },
+
+  "dataToBackup": "البيانات المراد نسخها احتياطياً:",
+  "@dataToBackup": {
+    "description": "تسمية البيانات المراد نسخها"
+  },
+
+  "exportShare": "تصدير ومشاركة",
+  "@exportShare": {
+    "description": "تسمية زر التصدير والمشاركة"
+  },
+
+  "backupFailed": "فشل النسخ الاحتياطي",
+  "@backupFailed": {
+    "description": "رسالة خطأ النسخ الاحتياطي"
+  },
+
+  "restoreData": "استعادة البيانات",
+  "@restoreData": {
+    "description": "عنوان نافذة استعادة البيانات"
+  },
+
+  "selectFile": "اختر ملفاً",
+  "@selectFile": {
+    "description": "تسمية زر اختيار الملف"
+  },
+
+  "restoreFailed": "فشلت الاستعادة",
+  "@restoreFailed": {
+    "description": "رسالة خطأ الاستعادة"
+  },
+
+  "errorReadingFile": "خطأ في قراءة الملف",
+  "@errorReadingFile": {
+    "description": "رسالة خطأ قراءة الملف"
+  },
+
+  "useCurrentLocation": "استخدم موقعك الحالي",
+  "@useCurrentLocation": {
+    "description": "زر استخدام الموقع الحالي"
+  },
+
+  "couldNotDetectLocation": "تعذر الكشف عن الموقع",
+  "@couldNotDetectLocation": {
+    "description": "رسالة خطأ الكشف عن الموقع"
+  },
+
+  "qiyamAlLayl": "قيام الليل",
+  "@qiyamAlLayl": {
+    "description": "صلاة الليل"
+  },
+
+  "recommended": "موصى به",
+  "@recommended": {
+    "description": "تسمية التوصيات"
+  },
+
+  "qiyamQuote": "ينزل ربنا كل ليلة إلى السماء الدنيا حين يبقى ثلث الليل الأخير",
+  "@qiyamQuote": {
+    "description": "حديث قيام الليل"
+  },
+
+  "qiyamSource": "— صحيح البخاري ومسلم",
+  "@qiyamSource": {
+    "description": "مصدر حديث قيام الليل"
+  },
+
+  "deleteTask": "احذف المهمة",
+  "@deleteTask": {
+    "description": "عنوان نافذة حذف المهمة"
+  },
+
+  "deleteTaskMessage": "حذف",
+  "@deleteTaskMessage": {
+    "description": "رسالة تأكيد حذف المهمة"
+  },
+
+  "edit": "تعديل",
+  "@edit": {
+    "description": "تسمية زر التعديل"
+  },
+
+  "now": "الآن",
+  "@now": {
+    "description": "مؤشر الوقت الحالي في الجدول الزمني"
+  },
+
+  "completed": "✓",
+  "@completed": {
+    "description": "رمز المكتمل"
+  },
+
+  "save": "حفظ",
+  "@save": {
+    "description": "تسمية زر الحفظ"
+  },
+
+  "done": "تم",
+  "@done": {
+    "description": "تسمية زر الانتهاء"
+  },
+
+  "close": "إغلاق",
+  "@close": {
+    "description": "تسمية زر الإغلاق"
+  },
+
+  "bookmarkSaved": "تم حفظ العلامة المرجعية",
+  "@bookmarkSaved": {
+    "description": "رسالة نجاح حفظ العلامة المرجعية"
+  },
+
+  "doneReading": "انتهيت من القراءة",
+  "@doneReading": {
+    "description": "تسمية زر انتهاء القراءة"
+  },
+
+  "english": "English",
+  "@english": {
+    "description": "خيار اللغة الإنجليزية"
+  },
+
+  "arabic": "العربية",
+  "@arabic": {
+    "description": "خيار اللغة العربية (بالعربية)"
+  },
+
+  "arabicEnglish": "عربي",
+  "@arabicEnglish": {
+    "description": "خيار اللغة العربية (بالإنجليزية)"
+  },
+
+  "minutes": "دقائق",
+  "@minutes": {
+    "description": "تسمية وحدة الوقت بالدقائق"
+  },
+
+  "days": "أيام",
+  "@days": {
+    "description": "تسمية وحدة الوقت بالأيام"
+  }
+}
+

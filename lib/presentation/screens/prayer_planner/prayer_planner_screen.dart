@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../core/router/app_router.dart';
 import '../../../data/services/free_time_service.dart';
 import '../../../domain/providers/free_time_provider.dart';
@@ -32,7 +33,7 @@ class PrayerPlannerScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.gray50,
       appBar: AppBar(
-        title: const Text('Day Timeline'),
+        title: Text(context.l10n.dayTimeline),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppDimensions.paddingMd),

@@ -23,26 +23,30 @@ class TaskAdapter extends TypeAdapter<Task> {
       scheduledTime: fields[3] as DateTime?,
       deadline: fields[4] as DateTime?,
       estimatedMinutes: fields[5] as int?,
-      isCompleted: (fields[6] as bool?) ?? false,
+      isCompleted: fields[6] as bool,
       createdAt: fields[7] as DateTime,
       completedAt: fields[8] as DateTime?,
-      priority: (fields[9] as int?) ?? 1,
-      hasNotification: (fields[10] as bool?) ?? false,
+      priority: fields[9] as int,
+      hasNotification: fields[10] as bool,
       category: fields[11] as String?,
-      tags: (fields[12] as List?)?.cast<String>() ?? [],
-      reminderMinutesBefore: (fields[13] as int?) ?? 10,
-      isRecurring: (fields[14] as bool?) ?? false,
+      tags: (fields[12] as List).cast<String>(),
+      reminderMinutesBefore: fields[13] as int,
+      isRecurring: fields[14] as bool,
       recurringPattern: fields[15] as String?,
-      isReligious: (fields[16] as bool?) ?? false,
+      isReligious: fields[16] as bool,
       prayerBlockId: fields[17] as String?,
-      orderIndex: (fields[18] as int?) ?? 0,
+      orderIndex: fields[18] as int,
+      state: fields[19] as TaskState,
+      archivedAt: fields[20] as DateTime?,
+      lastResetDate: fields[21] as DateTime?,
+      recurringEndDate: fields[22] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Task obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(23)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -80,7 +84,15 @@ class TaskAdapter extends TypeAdapter<Task> {
       ..writeByte(17)
       ..write(obj.prayerBlockId)
       ..writeByte(18)
-      ..write(obj.orderIndex);
+      ..write(obj.orderIndex)
+      ..writeByte(19)
+      ..write(obj.state)
+      ..writeByte(20)
+      ..write(obj.archivedAt)
+      ..writeByte(21)
+      ..write(obj.lastResetDate)
+      ..writeByte(22)
+      ..write(obj.recurringEndDate);
   }
 
   @override
@@ -134,6 +146,60 @@ class TaskPriorityAdapter extends TypeAdapter<TaskPriority> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is TaskPriorityAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class TaskStateAdapter extends TypeAdapter<TaskState> {
+  @override
+  final int typeId = 10;
+
+  @override
+  TaskState read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return TaskState.active;
+      case 1:
+        return TaskState.completed;
+      case 2:
+        return TaskState.skipped;
+      case 3:
+        return TaskState.archived;
+      case 4:
+        return TaskState.overdue;
+      default:
+        return TaskState.active;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, TaskState obj) {
+    switch (obj) {
+      case TaskState.active:
+        writer.writeByte(0);
+        break;
+      case TaskState.completed:
+        writer.writeByte(1);
+        break;
+      case TaskState.skipped:
+        writer.writeByte(2);
+        break;
+      case TaskState.archived:
+        writer.writeByte(3);
+        break;
+      case TaskState.overdue:
+        writer.writeByte(4);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TaskStateAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

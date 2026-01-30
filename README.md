@@ -1,20 +1,85 @@
 # Islamic Todo App
 
-A comprehensive Islamic productivity app that helps Muslims organize their daily prayers, tasks, and spiritual activities. Built with Flutter for cross-platform support.
+<div align="center">
+
+# 🕌 Islamic Todo
+
+**Your Spiritual Productivity Companion**
+
+[![Flutter](https://img.shields.io/badge/Flutter-3.9+-blue.svg)](https://flutter.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20macOS%20%7C%20Windows-lightgrey.svg)](https://github.com/brahimje/Islamic-Todo-App)
+
+A minimalist productivity app that seamlessly integrates Islamic practices with daily task management.
+
+[Features](#features) • [Installation](#installation) • [Screenshots](#screenshots) • [Contributing](#contributing)
+
+</div>
 
 ---
-**Note:** This is version 1.0. The app is still under active development—many features and fixes are planned for future updates. Core functions are working, and releases will be pushed as improvements are made.
+
+## 📖 About
+
+Islamic Todo is a comprehensive productivity app designed for Muslims to organize their daily prayers, tasks, and spiritual activities. With a clean, minimalist black-and-white design, it helps you stay focused on what matters most.
+
+Built with Flutter for true cross-platform support: **iOS • Android • macOS • Windows • Web**
+
 ---
 
 ## Features
 
-- **Prayer Management**: Track daily prayers with accurate Islamic prayer times
-- **Task Scheduling**: Organize daily tasks with smart scheduling and reminders
-- **Islamic Challenges**: Daily Adkar (remembrances), Quran reading, and spiritual goals
-- **Progress Tracking**: Visual progress bars, streaks, and achievements
-- **Notifications**: Timely reminders for prayers and tasks
-- **Backup & Restore**: Secure data backup and restoration
-- **Multi-platform**: Works on Android, iOS, macOS, and Windows
+### 📿 Prayer Management
+- **Accurate Prayer Times** - Automatic calculation based on your location
+- **5 Daily Prayers** - Fajr, Dhuhr, Asr, Maghrib, Isha tracking
+- **Nafila Prayers** - Track optional prayers (Tahajjud, Duha, Witr, etc.)
+- **Prayer Reminders** - Customizable notifications before prayer times
+- **Qibla Direction** - Always know which way to pray
+
+### ✅ Task Management
+- **Smart Scheduling** - Plan tasks between prayer times
+- **Categories & Tags** - Organize tasks your way
+- **Priority Levels** - Focus on what's important
+- **Deadline Tracking** - Never miss important tasks
+- **Free Time Blocks** - Discover available time slots
+
+### 📅 Calendar & Timeline
+- **Daily View** - See your entire day at a glance
+- **Weekly Overview** - Track weekly prayer and task completion
+- **Monthly Calendar** - Long-term planning and history
+- **Visual Timeline** - Time-blocked schedule view
+
+### 🌙 Daily Challenges
+- **Tasbih Counter** - SubhanAllah, Alhamdulillah, Allahu Akbar
+- **Morning & Evening Adhkar** - Daily remembrances
+- **Quran Reading Tracker** - Monitor your Quran progress
+- **After-Prayer Adhkar** - Spiritual reminders
+- **Custom Goals** - Set your own spiritual targets
+
+### 📊 Progress & Analytics
+- **Streak Tracking** - Maintain prayer and task streaks
+- **Completion Statistics** - Visualize your productivity
+- **Weekly Charts** - Track trends over time
+- **Achievement System** - Earn badges for consistency
+- **Insightful Metrics** - Understand your patterns
+
+### 🔔 Smart Notifications
+- **Prayer Reminders** - Customizable advance notifications
+- **Task Alerts** - Never forget important to-dos
+- **Background Updates** - Automatic prayer time updates
+- **Quiet Hours** - Respect your sleep and focus time
+
+### 🎨 Design Philosophy
+- **Minimalist Interface** - Clean black & white design
+- **Distraction-Free** - Focus on spiritual growth
+- **Fast & Responsive** - Smooth performance
+- **Intuitive Navigation** - Easy to use for all ages
+
+### 🔒 Privacy & Security
+- **Local Storage** - All data stays on your device
+- **Encrypted Database** - Secure data protection
+- **No Account Required** - Complete privacy
+- **Export/Import** - Control your data
+- **No Ads** - Completely ad-free experience
 
 ## Getting Started
 

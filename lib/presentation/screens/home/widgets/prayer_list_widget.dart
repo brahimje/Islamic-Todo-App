@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/extensions/localization_extensions.dart';
 import '../../../../core/constants/prayer_data.dart';
 import '../../../../domain/providers/prayer_provider.dart';
 import '../../../../domain/providers/nafila_provider.dart';
@@ -59,7 +60,7 @@ class PrayerListWidget extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppStrings.todaysPrayers,
+              context.l10n.todaysPrayers,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Container(

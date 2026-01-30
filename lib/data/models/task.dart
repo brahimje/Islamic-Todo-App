@@ -15,6 +15,25 @@ enum TaskPriority {
   high,
 }
 
+/// Task state enum for lifecycle tracking
+@HiveType(typeId: 10)
+enum TaskState {
+  @HiveField(0)
+  active,
+
+  @HiveField(1)
+  completed,
+
+  @HiveField(2)
+  skipped,
+
+  @HiveField(3)
+  archived,
+
+  @HiveField(4)
+  overdue,
+}
+
 /// Represents a user task
 @HiveType(typeId: 2)
 class Task extends HiveObject {
@@ -75,6 +94,18 @@ class Task extends HiveObject {
   @HiveField(18)
   final int orderIndex; // Order within the prayer block (for drag/drop reordering)
 
+  @HiveField(19)
+  final TaskState state; // Current state of the task
+
+  @HiveField(20)
+  final DateTime? archivedAt; // When the task was archived
+
+  @HiveField(21)
+  final DateTime? lastResetDate; // Last time this recurring task was reset
+
+  @HiveField(22)
+  final DateTime? recurringEndDate; // When recurring ends (optional)
+
   Task({
     required this.id,
     required this.title,
@@ -95,6 +126,10 @@ class Task extends HiveObject {
     this.isReligious = false,
     this.prayerBlockId,
     this.orderIndex = 0,
+    this.state = TaskState.active,
+    this.archivedAt,
+    this.lastResetDate,
+    this.recurringEndDate,
   });
 
   /// Get priority as enum
@@ -142,6 +177,63 @@ class Task extends HiveObject {
     return '${estimatedMinutes}m';
   }
 
+  /// Check if task is active (not archived, not completed today)
+  bool get isActive => state == TaskState.active;
+
+  /// Check if task should be visible in the UI (not archived)
+  bool get isVisible => state != TaskState.archived;
+
+  /// Check if task can be marked as recurring
+  bool get canRecur => isRecurring && recurringPattern != null;
+
+  /// Check if recurring task has expired
+  bool get isRecurringExpired => 
+    isRecurring && 
+    recurringEndDate != null && 
+    DateTime.now().isAfter(recurringEndDate!);
+
+  /// Generate a new task for the next occurrence of a recurring task
+  Task generateNextOccurrence() {
+    if (!isRecurring || recurringPattern == null) {
+      throw Exception('Cannot generate next occurrence for non-recurring task');
+    }
+
+    final now = DateTime.now();
+    DateTime nextScheduledTime;
+
+    switch (recurringPattern) {
+      case 'daily':
+        nextScheduledTime = DateTime(now.year, now.month, now.day + 1,
+            scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        break;
+      case 'weekly':
+        nextScheduledTime = now.add(const Duration(days: 7));
+        nextScheduledTime = DateTime(nextScheduledTime.year, nextScheduledTime.month,
+            nextScheduledTime.day, scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        break;
+      case 'monthly':
+        nextScheduledTime = DateTime(now.year, now.month + 1, now.day,
+            scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        break;
+      default:
+        throw Exception('Unknown recurring pattern: $recurringPattern');
+    }
+
+    // Check if recurring has expired
+    if (isRecurringExpired) {
+      throw Exception('Recurring task has expired');
+    }
+
+    return copyWith(
+      id: '${id}_${DateTime.now().millisecondsSinceEpoch}',
+      scheduledTime: nextScheduledTime,
+      isCompleted: false,
+      completedAt: null,
+      state: TaskState.active,
+      lastResetDate: now,
+    );
+  }
+
   /// Create a copy with updated fields
   Task copyWith({
     String? id,
@@ -163,6 +255,10 @@ class Task extends HiveObject {
     bool? isReligious,
     String? prayerBlockId,
     int? orderIndex,
+    TaskState? state,
+    DateTime? archivedAt,
+    DateTime? lastResetDate,
+    DateTime? recurringEndDate,
   }) {
     return Task(
       id: id ?? this.id,
@@ -184,6 +280,10 @@ class Task extends HiveObject {
       isReligious: isReligious ?? this.isReligious,
       prayerBlockId: prayerBlockId ?? this.prayerBlockId,
       orderIndex: orderIndex ?? this.orderIndex,
+      state: state ?? this.state,
+      archivedAt: archivedAt ?? this.archivedAt,
+      lastResetDate: lastResetDate ?? this.lastResetDate,
+      recurringEndDate: recurringEndDate ?? this.recurringEndDate,
     );
   }
 

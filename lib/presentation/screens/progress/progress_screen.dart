@@ -5,8 +5,8 @@ import 'package:islamic_todo_app/domain/providers/prayer_provider.dart';
 import 'package:islamic_todo_app/domain/providers/task_provider.dart';
 import 'package:islamic_todo_app/domain/providers/nafila_provider.dart';
 import 'package:islamic_todo_app/domain/providers/challenges_provider.dart';
+import 'package:islamic_todo_app/data/models/task.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:islamic_todo_app/core/constants/app_colors.dart';
 import 'package:islamic_todo_app/presentation/screens/progress/_activity_bar_chart.dart';
 /// Progress screen - Minimalist statistics and tracking
@@ -28,7 +28,7 @@ class ProgressScreen extends ConsumerWidget {
     final monthTasks = tasks.where((t) => 
       t.createdAt.month == now.month && t.createdAt.year == now.year
     ).toList();
-    final monthTasksCompleted = monthTasks.where((t) => t.isCompleted).length;
+    final monthTasksCompleted = monthTasks.where((t) => t.state == TaskState.completed).length;
     final monthTasksTotal = monthTasks.length;
     
     int monthPrayersCompleted = 0;
@@ -176,7 +176,7 @@ class ProgressScreen extends ConsumerWidget {
         continue;
       }
       
-      final completed = dayTasks.where((t) => t.isCompleted).length;
+      final completed = dayTasks.where((t) => t.state == TaskState.completed).length;
       if (completed >= dayTasks.length * 0.7) {
         streak++;
         checkDate = checkDate.subtract(const Duration(days: 1));
@@ -404,7 +404,7 @@ class _ProductivityInsightsCard extends ConsumerWidget {
              t.deadline!.isBefore(weekEnd.add(const Duration(days: 1)));
     }).toList();
     
-    final completedThisWeek = thisWeekTasks.where((t) => t.isCompleted).length;
+    final completedThisWeek = thisWeekTasks.where((t) => t.state == TaskState.completed).length;
     final totalThisWeek = thisWeekTasks.length;
     final weeklyRate = totalThisWeek > 0 ? (completedThisWeek / totalThisWeek * 100).round() : 0;
     
@@ -416,7 +416,7 @@ class _ProductivityInsightsCard extends ConsumerWidget {
       return t.deadline!.isAfter(lastWeekStart.subtract(const Duration(days: 1))) && 
              t.deadline!.isBefore(lastWeekEnd.add(const Duration(days: 1)));
     }).toList();
-    final lastWeekCompleted = lastWeekTasks.where((t) => t.isCompleted).length;
+    final lastWeekCompleted = lastWeekTasks.where((t) => t.state == TaskState.completed).length;
     final lastWeekTotal = lastWeekTasks.length;
     final lastWeekRate = lastWeekTotal > 0 ? (lastWeekCompleted / lastWeekTotal * 100).round() : 0;
     final weekTrend = weeklyRate - lastWeekRate;
@@ -425,7 +425,7 @@ class _ProductivityInsightsCard extends ConsumerWidget {
     final slotProductivity = <String, int>{
       'fajr': 0, 'dhuhr': 0, 'asr': 0, 'maghrib': 0, 'isha': 0,
     };
-    for (final task in tasks.where((t) => t.isCompleted && t.prayerBlockId != null)) {
+    for (final task in tasks.where((t) => t.state == TaskState.completed && t.prayerBlockId != null)) {
       final slot = task.prayerBlockId!.toLowerCase();
       if (slotProductivity.containsKey(slot)) {
         slotProductivity[slot] = slotProductivity[slot]! + 1;
@@ -444,7 +444,7 @@ class _ProductivityInsightsCard extends ConsumerWidget {
     for (int i = 1; i <= 7; i++) {
       dayProductivity[i] = 0;
     }
-    for (final task in tasks.where((t) => t.isCompleted && t.completedAt != null)) {
+    for (final task in tasks.where((t) => t.state == TaskState.completed && t.completedAt != null)) {
       final day = task.completedAt!.weekday;
       dayProductivity[day] = dayProductivity[day]! + 1;
     }

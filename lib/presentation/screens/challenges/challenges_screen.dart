@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import '../../../core/constants/app_colors.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../domain/providers/challenges_provider.dart';
 
 /// Daily Adhkar screen with Tasbih and Adhkar
@@ -3145,7 +3146,7 @@ class _SurahReaderSheetState extends State<_SurahReaderSheet> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: const Text('Close'),
+                  child: Text(context.l10n.close),
                 ),
               ],
             ),
@@ -3312,7 +3313,7 @@ class _SurahReaderSheetState extends State<_SurahReaderSheet> {
                               child: ElevatedButton.icon(
                                 onPressed: widget.onClose,
                                 icon: const Icon(Icons.check_circle_outline),
-                                label: const Text('Done Reading'),
+                                label: Text(context.l10n.doneReading),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.black,
                                   foregroundColor: AppColors.white,

@@ -1,0 +1,1340 @@
+{
+  "@@locale": "en",
+  "@@author": "Islamic Todo Team",
+  "@@version": "1.0.0",
+
+  "appName": "Islamic Todo",
+  "@appName": {
+    "description": "The name of the application"
+  },
+
+  "appTagline": "Harmonize your spiritual and daily life",
+  "@appTagline": {
+    "description": "The tagline of the application"
+  },
+
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Home navigation tab"
+  },
+
+  "navCalendar": "Calendar",
+  "@navCalendar": {
+    "description": "Calendar navigation tab"
+  },
+
+  "navProgress": "Progress",
+  "@navProgress": {
+    "description": "Progress navigation tab"
+  },
+
+  "navChallenges": "Challenges",
+  "@navChallenges": {
+    "description": "Challenges/Adhkar navigation tab"
+  },
+
+  "navSettings": "Settings",
+  "@navSettings": {
+    "description": "Settings navigation tab"
+  },
+
+  "fajr": "Fajr",
+  "@fajr": {
+    "description": "Fajr prayer name"
+  },
+
+  "sunrise": "Sunrise",
+  "@sunrise": {
+    "description": "Sunrise time name"
+  },
+
+  "dhuhr": "Dhuhr",
+  "@dhuhr": {
+    "description": "Dhuhr prayer name"
+  },
+
+  "asr": "Asr",
+  "@asr": {
+    "description": "Asr prayer name"
+  },
+
+  "maghrib": "Maghrib",
+  "@maghrib": {
+    "description": "Maghrib prayer name"
+  },
+
+  "isha": "Isha",
+  "@isha": {
+    "description": "Isha prayer name"
+  },
+
+  "tahajjud": "Tahajjud",
+  "@tahajjud": {
+    "description": "Tahajjud prayer name"
+  },
+
+  "doha": "Doha",
+  "@doha": {
+    "description": "Doha prayer name"
+  },
+
+  "ishraq": "Ishraq",
+  "@ishraq": {
+    "description": "Ishraq prayer name"
+  },
+
+  "awwabin": "Awwabin",
+  "@awwabin": {
+    "description": "Awwabin prayer name"
+  },
+
+  "witr": "Witr",
+  "@witr": {
+    "description": "Witr prayer name"
+  },
+
+  "tahiyyatMasjid": "Tahiyyat al-Masjid",
+  "@tahiyyatMasjid": {
+    "description": "Tahiyyat al-Masjid prayer name"
+  },
+
+  "nextPrayer": "Next Prayer",
+  "@nextPrayer": {
+    "description": "Next prayer label on home screen"
+  },
+
+  "todaysPrayers": "Today's Prayers",
+  "@todaysPrayers": {
+    "description": "Today's prayers section label"
+  },
+
+  "todaysTasks": "Today's Tasks",
+  "@todaysTasks": {
+    "description": "Today's tasks section label"
+  },
+
+  "addTask": "Add Task",
+  "@addTask": {
+    "description": "Add task button label"
+  },
+
+  "dailyQuote": "Daily Inspiration",
+  "@dailyQuote": {
+    "description": "Daily quote section label"
+  },
+
+  "taskTitle": "Task Title",
+  "@taskTitle": {
+    "description": "Task title field label"
+  },
+
+  "taskDescription": "Description (optional)",
+  "@taskDescription": {
+    "description": "Task description field label"
+  },
+
+  "taskDeadline": "Deadline",
+  "@taskDeadline": {
+    "description": "Task deadline field label"
+  },
+
+  "taskPriority": "Priority",
+  "@taskPriority": {
+    "description": "Task priority field label"
+  },
+
+  "taskCategory": "Category",
+  "@taskCategory": {
+    "description": "Task category field label"
+  },
+
+  "saveTask": "Save Task",
+  "@saveTask": {
+    "description": "Save task button label"
+  },
+
+  "deleteTask": "Delete Task",
+  "@deleteTask": {
+    "description": "Delete task action"
+  },
+
+  "editTask": "Edit Task",
+  "@editTask": {
+    "description": "Edit task action"
+  },
+
+  "noTasks": "No tasks for today",
+  "@noTasks": {
+    "description": "Empty tasks state message"
+  },
+
+  "allTasksCompleted": "All tasks completed! 🎉",
+  "@allTasksCompleted": {
+    "description": "Success message when all tasks are done"
+  },
+
+  "priorityHigh": "High",
+  "@priorityHigh": {
+    "description": "High priority level"
+  },
+
+  "priorityMedium": "Medium",
+  "@priorityMedium": {
+    "description": "Medium priority level"
+  },
+
+  "priorityLow": "Low",
+  "@priorityLow": {
+    "description": "Low priority level"
+  },
+
+  "categoryWork": "Work",
+  "@categoryWork": {
+    "description": "Work task category"
+  },
+
+  "categoryPersonal": "Personal",
+  "@categoryPersonal": {
+    "description": "Personal task category"
+  },
+
+  "categoryFamily": "Family",
+  "@categoryFamily": {
+    "description": "Family task category"
+  },
+
+  "categoryHealth": "Health",
+  "@categoryHealth": {
+    "description": "Health task category"
+  },
+
+  "categoryLearning": "Learning",
+  "@categoryLearning": {
+    "description": "Learning task category"
+  },
+
+  "categoryOther": "Other",
+  "@categoryOther": {
+    "description": "Other task category"
+  },
+
+  "dailyView": "Daily",
+  "@dailyView": {
+    "description": "Daily calendar view"
+  },
+
+  "weeklyView": "Weekly",
+  "@weeklyView": {
+    "description": "Weekly calendar view"
+  },
+
+  "monthlyView": "Monthly",
+  "@monthlyView": {
+    "description": "Monthly calendar view"
+  },
+
+  "today": "Today",
+  "@today": {
+    "description": "Today label"
+  },
+
+  "progressTitle": "Progress & Statistics",
+  "@progressTitle": {
+    "description": "Progress screen title"
+  },
+
+  "currentStreak": "Current Streak",
+  "@currentStreak": {
+    "description": "Current streak counter"
+  },
+
+  "prayersCompleted": "Prayers Completed",
+  "@prayersCompleted": {
+    "description": "Prayers completed stat"
+  },
+
+  "tasksCompleted": "Tasks Completed",
+  "@tasksCompleted": {
+    "description": "Tasks completed stat"
+  },
+
+  "thisWeek": "This Week",
+  "@thisWeek": {
+    "description": "This week period label"
+  },
+
+  "thisMonth": "This Month",
+  "@thisMonth": {
+    "description": "This month period label"
+  },
+
+  "achievements": "Achievements",
+  "@achievements": {
+    "description": "Achievements section label"
+  },
+
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+
+  "prayerSettings": "Prayer Settings",
+  "@prayerSettings": {
+    "description": "Prayer settings section"
+  },
+
+  "notificationSettings": "Notification Settings",
+  "@notificationSettings": {
+    "description": "Notification settings section"
+  },
+
+  "locationSettings": "Location",
+  "@locationSettings": {
+    "description": "Location settings section"
+  },
+
+  "calculationMethod": "Calculation Method",
+  "@calculationMethod": {
+    "description": "Prayer time calculation method setting"
+  },
+
+  "language": "Language",
+  "@language": {
+    "description": "Language setting"
+  },
+
+  "about": "About",
+  "@about": {
+    "description": "About section"
+  },
+
+  "version": "Version",
+  "@version": {
+    "description": "Version label"
+  },
+
+  "enableNotifications": "Enable Notifications",
+  "@enableNotifications": {
+    "description": "Enable notifications setting"
+  },
+
+  "prayerReminder": "Prayer Reminder",
+  "@prayerReminder": {
+    "description": "Prayer reminder notification type"
+  },
+
+  "taskReminder": "Task Reminder",
+  "@taskReminder": {
+    "description": "Task reminder notification type"
+  },
+
+  "reminderTime": "Remind me before",
+  "@reminderTime": {
+    "description": "Reminder time setting label"
+  },
+
+  "minutes": "minutes",
+  "@minutes": {
+    "description": "Minutes unit"
+  },
+
+  "save": "Save",
+  "@save": {
+    "description": "Save button label"
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button label"
+  },
+
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button label"
+  },
+
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button label"
+  },
+
+  "done": "Done",
+  "@done": {
+    "description": "Done button label"
+  },
+
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button label"
+  },
+
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button label"
+  },
+
+  "inTime": "in",
+  "@inTime": {
+    "description": "Time preposition"
+  },
+
+  "hours": "hours",
+  "@hours": {
+    "description": "Hours unit"
+  },
+
+  "mins": "mins",
+  "@mins": {
+    "description": "Minutes short form"
+  },
+
+  "days": "days",
+  "@days": {
+    "description": "Days unit"
+  },
+
+  "noData": "No data available",
+  "@noData": {
+    "description": "No data empty state message"
+  },
+
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading indicator text"
+  },
+
+  "error": "Something went wrong",
+  "@error": {
+    "description": "Error message"
+  },
+
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button label"
+  },
+
+  "taskAdded": "Task added successfully",
+  "@taskAdded": {
+    "description": "Task added success message"
+  },
+
+  "taskUpdated": "Task updated successfully",
+  "@taskUpdated": {
+    "description": "Task updated success message"
+  },
+
+  "taskDeleted": "Task deleted",
+  "@taskDeleted": {
+    "description": "Task deleted success message"
+  },
+
+  "prayerMarked": "Prayer marked as completed",
+  "@prayerMarked": {
+    "description": "Prayer completion success message"
+  },
+
+  "settingsSaved": "Settings saved",
+  "@settingsSaved": {
+    "description": "Settings save success message"
+  },
+
+  "skip": "Skip",
+  "@skip": {
+    "description": "Skip action for tasks"
+  },
+
+  "archive": "Archive",
+  "@archive": {
+    "description": "Archive action for tasks"
+  },
+
+  "deleteTaskConfirm": "Delete Task?",
+  "@deleteTaskConfirm": {
+    "description": "Delete task confirmation dialog title"
+  },
+
+  "deleteTaskMessage": "Are you sure you want to delete this task?",
+  "@deleteTaskMessage": {
+    "description": "Delete task confirmation message"
+  },
+
+  "taskTitleEmpty": "Please enter a task title",
+  "@taskTitleEmpty": {
+    "description": "Validation error when task title is empty"
+  },
+
+  "taskTitleHint": "e.g., Read Surah Al-Kahf",
+  "@taskTitleHint": {
+    "description": "Hint text for task title input"
+  },
+
+  "taskDescriptionHint": "What do you need to do?",
+  "@taskDescriptionHint": {
+    "description": "Hint text for task description input"
+  },
+
+  "addDetailsHint": "Add details...",
+  "@addDetailsHint": {
+    "description": "Hint text for adding task details"
+  },
+
+  "todaysSchedule": "Today's Schedule",
+  "@todaysSchedule": {
+    "description": "Prayer timeline header"
+  },
+
+  "next": "NEXT",
+  "@next": {
+    "description": "Next prayer indicator"
+  },
+
+  "now": "NOW",
+  "@now": {
+    "description": "Current time indicator"
+  },
+
+  "qiyamAlLayl": "Qiyam al-Layl",
+  "@qiyamAlLayl": {
+    "description": "Night prayer name"
+  },
+
+  "available": "Available",
+  "@available": {
+    "description": "Available status"
+  },
+
+  "tasks": "Tasks",
+  "@tasks": {
+    "description": "Tasks status"
+  },
+
+  "qiyam": "Qiyam",
+  "@qiyam": {
+    "description": "Qiyam status"
+  },
+
+  "sleep": "Sleep",
+  "@sleep": {
+    "description": "Sleep time indicator"
+  },
+
+  "free": "Free",
+  "@free": {
+    "description": "Free time indicator"
+  },
+
+  "prepTime": "min prep",
+  "@prepTime": {
+    "description": "Prayer preparation time suffix"
+  },
+
+  "freeTime": "min free",
+  "@freeTime": {
+    "description": "Free time suffix"
+  },
+
+  "recommendedActions": "Recommended Actions",
+  "@recommendedActions": {
+    "description": "Section header for recommended actions"
+  },
+
+  "qiyamQuote": "\"ينزل ربنا تبارك وتعالى كل ليلة إلى السماء الدنيا حين يبقى ثلث الليل الآخر\"",
+  "@qiyamQuote": {
+    "description": "Arabic Qiyam hadith quote"
+  },
+
+  "qiyamQuoteTranslation": "Our Lord descends every night to the lowest heaven when the last third remains.",
+  "@qiyamQuoteTranslation": {
+    "description": "English translation of Qiyam hadith"
+  },
+
+  "qiyamQuoteSource": "— Sahih al-Bukhari & Muslim",
+  "@qiyamQuoteSource": {
+    "description": "Source of Qiyam hadith"
+  },
+
+  "qiyamRecitation": "Recite: Al-Mulk, As-Sajdah, Al-Muzammil, or your memorized surahs",
+  "@qiyamRecitation": {
+    "description": "Recommended surahs for recitation during Qiyam"
+  },
+
+  "taskMenuEdit": "Edit",
+  "@taskMenuEdit": {
+    "description": "Edit task menu item"
+  },
+
+  "taskMenuDelete": "Delete",
+  "@taskMenuDelete": {
+    "description": "Delete task menu item"
+  },
+
+  "taskStateDone": "✓ Done",
+  "@taskStateDone": {
+    "description": "Task completed state"
+  },
+
+  "taskStateSkipped": "⊘ Skipped",
+  "@taskStateSkipped": {
+    "description": "Task skipped state"
+  },
+
+  "taskStateArchived": "📦 Archived",
+  "@taskStateArchived": {
+    "description": "Task archived state"
+  },
+
+  "taskStateOverdue": "⚠ Overdue",
+  "@taskStateOverdue": {
+    "description": "Task overdue state"
+  },
+
+  "prayerPreparation": "Prayer Preparation",
+  "@prayerPreparation": {
+    "description": "Prayer preparation settings section"
+  },
+
+  "prayerPrepDescription": "Set your preparation time for each prayer (includes wudu, travel to mosque if needed, etc.)",
+  "@prayerPrepDescription": {
+    "description": "Description for prayer preparation settings"
+  },
+
+  "sleepQiyamAlLayl": "Sleep & Qiyam al-Layl",
+  "@sleepQiyamAlLayl": {
+    "description": "Sleep and Qiyam al-Layl settings section"
+  },
+
+  "enableNightPrayerCalculation": "Enable night prayer time calculation",
+  "@enableNightPrayerCalculation": {
+    "description": "Toggle to enable Qiyam al-Layl time calculation"
+  },
+
+  "qiyamStartTime": "Qiyam Start Time",
+  "@qiyamStartTime": {
+    "description": "Start time for Qiyam al-Layl"
+  },
+
+  "sleepTime": "Sleep Time",
+  "@sleepTime": {
+    "description": "Target sleep time"
+  },
+
+  "madhab": "Madhab",
+  "@madhab": {
+    "description": "Islamic school of thought"
+  },
+
+  "madhab0": "Shafi'i, Maliki, Hanbali",
+  "@madhab0": {
+    "description": "Madhab option - Standard Asr"
+  },
+
+  "madhab0Description": "Standard Asr time (shadow equals object)",
+  "@madhab0Description": {
+    "description": "Description for Madhab 0 (Standard Asr)"
+  },
+
+  "madhab1": "Hanafi",
+  "@madhab1": {
+    "description": "Madhab option - Later Asr"
+  },
+
+  "madhab1Description": "Later Asr time (shadow equals twice object)",
+  "@madhab1Description": {
+    "description": "Description for Madhab 1 (Later Asr)"
+  },
+
+  "locationTitle": "Location",
+  "@locationTitle": {
+    "description": "Location settings title"
+  },
+
+  "useCurrentLocation": "Use Current Location",
+  "@useCurrentLocation": {
+    "description": "Button to use device current location"
+  },
+
+  "searchCity": "Search city...",
+  "@searchCity": {
+    "description": "Search city input hint text"
+  },
+
+  "popularCities": "Popular Cities",
+  "@popularCities": {
+    "description": "Popular cities section header"
+  },
+
+  "morningAdhkarTime": "Morning Adhkar Time",
+  "@morningAdhkarTime": {
+    "description": "Morning Adhkar time setting"
+  },
+
+  "eveningAdhkarTime": "Evening Adhkar Time",
+  "@eveningAdhkarTime": {
+    "description": "Evening Adhkar time setting"
+  },
+
+  "reminderTimeBeforePrayer": "Reminder Time Before Prayer",
+  "@reminderTimeBeforePrayer": {
+    "description": "Reminder time configuration title"
+  },
+
+  "weekStartsOn": "Week Starts On",
+  "@weekStartsOn": {
+    "description": "Week starting day setting"
+  },
+
+  "monday": "Monday",
+  "@monday": {
+    "description": "Monday day name"
+  },
+
+  "sunday": "Sunday",
+  "@sunday": {
+    "description": "Sunday day name"
+  },
+
+  "saturday": "Saturday",
+  "@saturday": {
+    "description": "Saturday day name"
+  },
+
+  "backupData": "Backup Data",
+  "@backupData": {
+    "description": "Backup data button label"
+  },
+
+  "backupDataDescription": "Export your data to a file",
+  "@backupDataDescription": {
+    "description": "Description for backup data option"
+  },
+
+  "backupDataTitle": "Backup Data",
+  "@backupDataTitle": {
+    "description": "Backup data dialog title"
+  },
+
+  "backupDataMessage": "This will export your data to a JSON file that you can share or save.",
+  "@backupDataMessage": {
+    "description": "Backup data dialog message"
+  },
+
+  "dataToBackup": "Data to backup:",
+  "@dataToBackup": {
+    "description": "Label for data selection in backup dialog"
+  },
+
+  "exportShare": "Export & Share",
+  "@exportShare": {
+    "description": "Export and share button label"
+  },
+
+  "restoreData": "Restore Data",
+  "@restoreData": {
+    "description": "Restore data from backup"
+  },
+
+  "restoreDataDescription": "Import data from a backup file",
+  "@restoreDataDescription": {
+    "description": "Description for restore data option"
+  },
+
+  "restoreDataTitle": "Restore Data",
+  "@restoreDataTitle": {
+    "description": "Restore data dialog title"
+  },
+
+  "restoreDataMessage": "Select a backup file to restore. This will add the backup data to your current data (existing data will not be deleted).",
+  "@restoreDataMessage": {
+    "description": "Restore data dialog message"
+  },
+
+  "selectFile": "Select File",
+  "@selectFile": {
+    "description": "Select file button label"
+  },
+
+  "clearAllData": "Clear All Data",
+  "@clearAllData": {
+    "description": "Clear all data button label"
+  },
+
+  "clearAllDataConfirm": "Clear All Data?",
+  "@clearAllDataConfirm": {
+    "description": "Clear all data confirmation title"
+  },
+
+  "clearAllDataMessage": "This will permanently delete all your prayers, tasks, and settings. This action cannot be undone.",
+  "@clearAllDataMessage": {
+    "description": "Clear all data warning message"
+  },
+
+  "dataCleared": "All data cleared",
+  "@dataCleared": {
+    "description": "Success message after clearing data"
+  },
+
+  "versionNumber": "1.0.0",
+  "@versionNumber": {
+    "description": "Application version number"
+  },
+
+  "qiblaDirection": "Qibla Direction",
+  "@qiblaDirection": {
+    "description": "Qibla direction setting"
+  },
+
+  "calculationMethodTitle": "Calculation Method",
+  "@calculationMethodTitle": {
+    "description": "Prayer time calculation method title"
+  },
+
+  "dailyAdhkar": "Daily Adhkar",
+  "@dailyAdhkar": {
+    "description": "Daily Adhkar section title"
+  },
+
+  "tasbih": "Tasbih",
+  "@tasbih": {
+    "description": "Tasbih category"
+  },
+
+  "adhkar": "Adhkar",
+  "@adhkar": {
+    "description": "Adhkar category"
+  },
+
+  "quran": "Quran",
+  "@quran": {
+    "description": "Quran category"
+  },
+
+  "todaysProgress": "Today's Progress",
+  "@todaysProgress": {
+    "description": "Today's progress indicator"
+  },
+
+  "setTarget": "Set Target",
+  "@setTarget": {
+    "description": "Set target button for challenges"
+  },
+
+  "dailyTasbih": "Daily Tasbih",
+  "@dailyTasbih": {
+    "description": "Daily Tasbih section"
+  },
+
+  "readQuran": "Read Quran",
+  "@readQuran": {
+    "description": "Read Quran task example"
+  },
+
+  "updateTask": "Update Task",
+  "@updateTask": {
+    "description": "Update task button label"
+  },
+
+  "noEventsForThisDay": "No events for this day",
+  "@noEventsForThisDay": {
+    "description": "Empty state message for calendar day"
+  },
+
+  "dayDone": "DONE",
+  "@dayDone": {
+    "description": "Day completion badge"
+  },
+
+  "eid": "عيد",
+  "@eid": {
+    "description": "Eid Arabic label"
+  },
+
+  "tapForDetails": "Tap for details & guidance",
+  "@tapForDetails": {
+    "description": "Guidance text for event details"
+  },
+
+  "about": "About",
+  "@about": {
+    "description": "About section header"
+  },
+
+  "whatToDo": "What to Do",
+  "@whatToDo": {
+    "description": "What to do action section"
+  },
+
+  "guidanceAccording": "Guidance according to",
+  "@guidanceAccording": {
+    "description": "Guidance attribution text"
+  },
+
+  "fastingProhibited": "Fasting is prohibited on this day",
+  "@fastingProhibited": {
+    "description": "Fasting prohibition warning"
+  },
+
+  "sunnahPrayer": "Sunnah Prayer",
+  "@sunnahPrayer": {
+    "description": "Sunnah prayer type label"
+  },
+
+  "task": "Task",
+  "@task": {
+    "description": "Task type label"
+  },
+
+  "productivity": "Productivity",
+  "@productivity": {
+    "description": "Productivity meter label"
+  },
+
+  "prayerStreak": "Prayer streak",
+  "@prayerStreak": {
+    "description": "Prayer streak mini card label"
+  },
+
+  "taskStreak": "Task streak",
+  "@taskStreak": {
+    "description": "Task streak mini card label"
+  },
+
+  "weeklyInsights": "Weekly Insights",
+  "@weeklyInsights": {
+    "description": "Weekly insights card header"
+  },
+
+  "taskRate": "Task rate",
+  "@taskRate": {
+    "description": "Task completion rate label"
+  },
+
+  "prayerRate": "Prayer rate",
+  "@prayerRate": {
+    "description": "Prayer completion rate label"
+  },
+
+  "bestSlot": "Best slot",
+  "@bestSlot": {
+    "description": "Best prayer time slot label"
+  },
+
+  "bestDay": "Best day",
+  "@bestDay": {
+    "description": "Best day of week label"
+  },
+
+  "tasksOf": "of",
+  "@tasksOf": {
+    "description": "Preposition for task count display"
+  },
+
+  "prayersOf": "of",
+  "@prayersOf": {
+    "description": "Preposition for prayer count display"
+  },
+
+  "firstLight": "First Light",
+  "@firstLight": {
+    "description": "Achievement title"
+  },
+
+  "firstLightDesc": "Pray 5 prayers in a day",
+  "@firstLightDesc": {
+    "description": "Achievement description"
+  },
+
+  "onFire": "On Fire",
+  "@onFire": {
+    "description": "Achievement title"
+  },
+
+  "onFireDesc": "7-day prayer streak",
+  "@onFireDesc": {
+    "description": "Achievement description"
+  },
+
+  "star": "Star",
+  "@star": {
+    "description": "Achievement title"
+  },
+
+  "starDesc": "30-day prayer streak",
+  "@starDesc": {
+    "description": "Achievement description"
+  },
+
+  "taskmaster": "Taskmaster",
+  "@taskmaster": {
+    "description": "Achievement title"
+  },
+
+  "taskmasterDesc": "Complete 10 tasks",
+  "@taskmasterDesc": {
+    "description": "Achievement description"
+  },
+
+  "devoted": "Devoted",
+  "@devoted": {
+    "description": "Achievement title"
+  },
+
+  "devotedDesc": "Enable 3 nafila prayers",
+  "@devotedDesc": {
+    "description": "Achievement description"
+  },
+
+  "nightOwl": "Night Owl",
+  "@nightOwl": {
+    "description": "Achievement title"
+  },
+
+  "nightOwlDesc": "7-day task streak",
+  "@nightOwlDesc": {
+    "description": "Achievement description"
+  },
+
+  "nafilaPrayers": "Nafila Prayers",
+  "@nafilaPrayers": {
+    "description": "Nafila prayers section header"
+  },
+
+  "noDailyAdhkarAvailable": "No daily Adhkar available.",
+  "@noDailyAdhkarAvailable": {
+    "description": "Empty state message for daily adhkar"
+  },
+
+  "dailyAdhkarSection": "Daily Adkar",
+  "@dailyAdhkarSection": {
+    "description": "Daily adhkar section header in progress"
+  },
+
+  "dayTimeline": "Day Timeline",
+  "@dayTimeline": {
+    "description": "Day timeline tooltip"
+  },
+
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings screen tooltip"
+  },
+
+  "preferences": "Preferences",
+  "@preferences": {
+    "description": "Preferences settings section"
+  },
+
+  "data": "Data",
+  "@data": {
+    "description": "Data settings section"
+  },
+
+  "prayer": "Prayer",
+  "@prayer": {
+    "description": "Prayer subsection header"
+  },
+
+  "morningAdhkar": "Morning Adhkar",
+  "@morningAdhkar": {
+    "description": "Morning adhkar toggle label"
+  },
+
+  "eveningAdhkar": "Evening Adhkar",
+  "@eveningAdhkar": {
+    "description": "Evening adhkar toggle label"
+  },
+
+  "afterPrayerAdhkar": "After Prayer Adhkar",
+  "@afterPrayerAdhkar": {
+    "description": "After prayer adhkar toggle label"
+  },
+
+  "sleepAdhkar": "Sleep Adhkar",
+  "@sleepAdhkar": {
+    "description": "Sleep adhkar toggle label"
+  },
+
+  "nafilaReminders": "Nafila Reminders",
+  "@nafilaReminders": {
+    "description": "Nafila prayer reminders toggle"
+  },
+
+  "taskReminders": "Task Reminders",
+  "@taskReminders": {
+    "description": "Task reminders toggle label"
+  },
+
+  "twentyFourHourFormat": "24-Hour Format",
+  "@twentyFourHourFormat": {
+    "description": "24-hour time format toggle"
+  },
+
+  "showCompletedTasks": "Show Completed Tasks",
+  "@showCompletedTasks": {
+    "description": "Show completed tasks toggle"
+  },
+
+  "reminded": "minutes",
+  "@reminded": {
+    "description": "Minutes label for reminder time display"
+  },
+
+  "minBeforePrayer": "min before prayer",
+  "@minBeforePrayer": {
+    "description": "Reminder time before prayer label"
+  },
+
+  "dayTimeline": "Day Timeline",
+  "@dayTimeline": {
+    "description": "Day timeline screen title"
+  },
+
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings screen title"
+  },
+
+  "skipForNow": "Skip for now",
+  "@skipForNow": {
+    "description": "Skip button for onboarding"
+  },
+
+  "maybeLater": "Maybe later",
+  "@maybeLater": {
+    "description": "Maybe later button for onboarding"
+  },
+
+  "back": "Back",
+  "@back": {
+    "description": "Back button label"
+  },
+
+  "next": "Next",
+  "@next": {
+    "description": "Next button label"
+  },
+
+  "getStarted": "Get Started",
+  "@getStarted": {
+    "description": "Get started button for onboarding"
+  },
+
+  "clear": "Clear",
+  "@clear": {
+    "description": "Clear button label"
+  },
+
+  "nafilaPrayers": "Nafila Prayers",
+  "@nafilaPrayers": {
+    "description": "Nafila prayers screen title"
+  },
+
+  "addTask": "Add Task",
+  "@addTask": {
+    "description": "Add task button label"
+  },
+
+  "madhab0": "Shafi'i, Maliki, Hanbali",
+  "@madhab0": {
+    "description": "First madhab option"
+  },
+
+  "madhab0Desc": "Standard Asr time (shadow equals object)",
+  "@madhab0Desc": {
+    "description": "First madhab description"
+  },
+
+  "madhab1": "Hanafi",
+  "@madhab1": {
+    "description": "Second madhab option"
+  },
+
+  "madhab1Desc": "Later Asr time (shadow equals twice object)",
+  "@madhab1Desc": {
+    "description": "Second madhab description"
+  },
+
+  "monday": "Monday",
+  "@monday": {
+    "description": "Monday day name"
+  },
+
+  "sunday": "Sunday",
+  "@sunday": {
+    "description": "Sunday day name"
+  },
+
+  "saturday": "Saturday",
+  "@saturday": {
+    "description": "Saturday day name"
+  },
+
+  "clearAllData": "Clear All Data?",
+  "@clearAllData": {
+    "description": "Clear all data dialog title"
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button label"
+  },
+
+  "clearDataMessage": "This will delete all your tasks, prayers, and settings. This cannot be undone.",
+  "@clearDataMessage": {
+    "description": "Clear data confirmation message"
+  },
+
+  "allDataCleared": "All data cleared",
+  "@allDataCleared": {
+    "description": "Data cleared success message"
+  },
+
+  "backupData": "Backup Data",
+  "@backupData": {
+    "description": "Backup data dialog title"
+  },
+
+  "backupDescription": "This will export your data to a JSON file that you can share or save.",
+  "@backupDescription": {
+    "description": "Backup description"
+  },
+
+  "dataToBackup": "Data to backup:",
+  "@dataToBackup": {
+    "description": "Data to backup label"
+  },
+
+  "exportShare": "Export & Share",
+  "@exportShare": {
+    "description": "Export and share button label"
+  },
+
+  "backupFailed": "Backup failed",
+  "@backupFailed": {
+    "description": "Backup failed error message"
+  },
+
+  "restoreData": "Restore Data",
+  "@restoreData": {
+    "description": "Restore data dialog title"
+  },
+
+  "selectFile": "Select File",
+  "@selectFile": {
+    "description": "Select file button label"
+  },
+
+  "restoreFailed": "Restore failed",
+  "@restoreFailed": {
+    "description": "Restore failed error message"
+  },
+
+  "errorReadingFile": "Error reading file",
+  "@errorReadingFile": {
+    "description": "Error reading file message"
+  },
+
+  "useCurrentLocation": "Use Current Location",
+  "@useCurrentLocation": {
+    "description": "Use current location button"
+  },
+
+  "couldNotDetectLocation": "Could not detect location",
+  "@couldNotDetectLocation": {
+    "description": "Location detection error message"
+  },
+
+  "qiyamAlLayl": "Qiyam al-Layl",
+  "@qiyamAlLayl": {
+    "description": "Night prayer in English"
+  },
+
+  "recommended": "Recommended",
+  "@recommended": {
+    "description": "Recommended label for suggestions"
+  },
+
+  "qiyamQuote": "Our Lord descends every night to the lowest heaven when the last third remains.",
+  "@qiyamQuote": {
+    "description": "Qiyam al-Layl hadith quote"
+  },
+
+  "qiyamSource": "— Sahih al-Bukhari & Muslim",
+  "@qiyamSource": {
+    "description": "Qiyam hadith source"
+  },
+
+  "deleteTask": "Delete Task",
+  "@deleteTask": {
+    "description": "Delete task dialog title"
+  },
+
+  "deleteTaskMessage": "Delete",
+  "@deleteTaskMessage": {
+    "description": "Delete task confirmation message"
+  },
+
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button label"
+  },
+
+  "now": "NOW",
+  "@now": {
+    "description": "Now indicator in timeline"
+  },
+
+  "completed": "✓",
+  "@completed": {
+    "description": "Completed indicator symbol"
+  },
+
+  "save": "Save",
+  "@save": {
+    "description": "Save button label"
+  },
+
+  "done": "Done",
+  "@done": {
+    "description": "Done button label"
+  },
+
+  "close": "Close",
+  "@close": {
+    "description": "Close button label"
+  },
+
+  "bookmarkSaved": "Bookmark saved",
+  "@bookmarkSaved": {
+    "description": "Bookmark saved success message"
+  },
+
+  "doneReading": "Done Reading",
+  "@doneReading": {
+    "description": "Done reading button label"
+  },
+
+  "english": "English",
+  "@english": {
+    "description": "English language option"
+  },
+
+  "arabic": "العربية",
+  "@arabic": {
+    "description": "Arabic language option (in Arabic)"
+  },
+
+  "arabicEnglish": "Arabic",
+  "@arabicEnglish": {
+    "description": "Arabic language option (in English)"
+  },
+
+  "minutes": "minutes",
+  "@minutes": {
+    "description": "Minutes time unit label"
+  },
+
+  "days": "days",
+  "@days": {
+    "description": "Days time unit label"
+  }
+}

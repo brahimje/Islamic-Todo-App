@@ -34,6 +34,7 @@ class HiveService {
     Hive.registerAdapter(NafilaFrequencyAdapter());
     Hive.registerAdapter(TaskAdapter());
     Hive.registerAdapter(TaskPriorityAdapter());
+    Hive.registerAdapter(TaskStateAdapter()); // Register TaskState enum adapter
     Hive.registerAdapter(DailyQuoteAdapter());
     Hive.registerAdapter(QuoteTypeAdapter());
     Hive.registerAdapter(UserSettingsAdapter());

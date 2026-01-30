@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../core/router/app_router.dart';
 import '../../../domain/providers/notification_provider.dart';
 import 'widgets/daily_quote_widget.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends ConsumerWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.appName),
+        title: Text(context.l10n.appName),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu_book, color: AppColors.black, size: 24),

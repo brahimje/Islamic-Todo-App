@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/extensions/localization_extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../data/models/task.dart';
 import '../../../../domain/providers/task_provider.dart';
@@ -17,7 +18,7 @@ class TaskListWidget extends ConsumerWidget {
     final tasks = ref.watch(todayTasksProvider);
     final taskNotifier = ref.read(taskProvider.notifier);
 
-    final completedCount = tasks.where((t) => t.isCompleted).length;
+    final completedCount = tasks.where((t) => t.state == TaskState.completed).length;
     final totalCount = tasks.length;
 
     return Column(
@@ -27,7 +28,7 @@ class TaskListWidget extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppStrings.todaysTasks,
+              context.l10n.todaysTasks,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Container(
@@ -71,7 +72,7 @@ class TaskListWidget extends ConsumerWidget {
                 ),
                 const SizedBox(height: AppDimensions.spacingSm),
                 Text(
-                  AppStrings.noTasks,
+                  context.l10n.noTasks,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.gray500,
                       ),
@@ -99,8 +100,11 @@ class TaskListWidget extends ConsumerWidget {
                       onToggle: () {
                         taskNotifier.toggleTaskCompletion(task.id);
                       },
-                      onDelete: () {
-                        taskNotifier.deleteTask(task.id);
+                      onSkip: () {
+                        taskNotifier.skipTask(task.id);
+                      },
+                      onArchive: () {
+                        taskNotifier.archiveTask(task.id);
                       },
                     );
                   },
@@ -120,7 +124,7 @@ class TaskListWidget extends ConsumerWidget {
                         ),
                         const SizedBox(width: AppDimensions.spacingXs),
                         Text(
-                          AppStrings.addTask,
+                          context.l10n.addTask,
                           style:
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: AppColors.gray600,
@@ -142,12 +146,14 @@ class TaskListWidget extends ConsumerWidget {
 class _TaskTile extends StatelessWidget {
   final Task task;
   final VoidCallback onToggle;
-  final VoidCallback onDelete;
+  final VoidCallback onSkip;
+  final VoidCallback onArchive;
 
   const _TaskTile({
     required this.task,
     required this.onToggle,
-    required this.onDelete,
+    required this.onSkip,
+    required this.onArchive,
   });
 
   Color get _priorityColor {
@@ -161,10 +167,40 @@ class _TaskTile extends StatelessWidget {
     }
   }
 
+  Color? get _stateBackgroundColor {
+    switch (task.state) {
+      case TaskState.completed:
+        return AppColors.successLight;
+      case TaskState.skipped:
+        return AppColors.gray100;
+      case TaskState.archived:
+        return AppColors.gray50;
+      case TaskState.overdue:
+        return AppColors.errorLight;
+      default:
+        return null;
+    }
+  }
+
+  String get _stateLabel {
+    switch (task.state) {
+      case TaskState.completed:
+        return '✓ Done';
+      case TaskState.skipped:
+        return '⊘ Skipped';
+      case TaskState.archived:
+        return '📦 Archived';
+      case TaskState.overdue:
+        return '⚠ Overdue';
+      default:
+        return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onToggle,
+      onTap: task.state == TaskState.active ? onToggle : null,
       onLongPress: () {
         context.push('${AppRoutes.editTask}/${task.id}');
       },
@@ -192,19 +228,25 @@ class _TaskTile extends StatelessWidget {
               height: 22,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: task.isCompleted ? AppColors.black : AppColors.white,
+                color: task.state == TaskState.completed ? AppColors.success : AppColors.white,
                 border: Border.all(
-                  color: task.isCompleted ? AppColors.black : AppColors.gray400,
+                  color: task.state == TaskState.completed ? AppColors.success : AppColors.gray400,
                   width: 2,
                 ),
               ),
-              child: task.isCompleted
+              child: task.state == TaskState.completed
                   ? const Icon(
                       Icons.check,
                       size: 14,
                       color: AppColors.white,
                     )
-                  : null,
+                  : task.state == TaskState.skipped
+                      ? const Icon(
+                          Icons.close,
+                          size: 14,
+                          color: AppColors.gray400,
+                        )
+                      : null,
             ),
             const SizedBox(width: AppDimensions.spacingMd),
 
@@ -217,10 +259,12 @@ class _TaskTile extends StatelessWidget {
                     task.title,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w500,
-                          decoration: task.isCompleted
+                          decoration: (task.state == TaskState.completed ||
+                                  task.state == TaskState.skipped)
                               ? TextDecoration.lineThrough
                               : null,
-                          color: task.isCompleted
+                          color: (task.state == TaskState.completed ||
+                                  task.state == TaskState.skipped)
                               ? AppColors.gray500
                               : AppColors.black,
                         ),
@@ -236,19 +280,80 @@ class _TaskTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
+                  if (task.state != TaskState.active) ...[
+                    const SizedBox(height: 4),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: _stateBackgroundColor,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        _stateLabel,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
 
-            // Delete button
-            IconButton(
-              icon: const Icon(
-                Icons.delete_outline,
-                color: AppColors.gray400,
+            // Action buttons
+            if (task.state == TaskState.active)
+              PopupMenuButton<String>(
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 'skip',
+                    child: Row(
+                      children: [
+                        const Icon(Icons.skip_next, size: 18),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.skip),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'archive',
+                    child: Row(
+                      children: [
+                        const Icon(Icons.archive, size: 18),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.archive),
+                      ],
+                    ),
+                  ),
+                ],
+                onSelected: (value) {
+                  if (value == 'skip') {
+                    onSkip();
+                  } else if (value == 'archive') {
+                    onArchive();
+                  }
+                },
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: AppColors.gray400,
+                  ),
+                  iconSize: 20,
+                  onPressed: null,
+                ),
+              )
+            else
+              IconButton(
+                icon: const Icon(
+                  Icons.archive,
+                  color: AppColors.gray400,
+                ),
+                iconSize: 20,
+                onPressed: onArchive,
               ),
-              iconSize: 20,
-              onPressed: onDelete,
-            ),
           ],
         ),
       ),

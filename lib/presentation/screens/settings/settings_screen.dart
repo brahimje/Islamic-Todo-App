@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/router/app_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../data/services/location_service.dart';
 import '../../../data/services/prayer_time_service.dart';
 import '../../../data/services/free_time_service.dart';
@@ -12,6 +12,7 @@ import '../../../domain/providers/settings_provider.dart';
 import '../../../domain/providers/prayer_provider.dart';
 import '../../../domain/providers/free_time_provider.dart';
 import '../../../domain/providers/backup_provider.dart';
+import '../../../domain/providers/locale_provider.dart';
 
 /// Settings screen
 class SettingsScreen extends ConsumerWidget {
@@ -25,7 +26,7 @@ class SettingsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(context.l10n.settings),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(
@@ -230,6 +231,7 @@ class SettingsScreen extends ConsumerWidget {
             context,
             title: 'Preferences',
             children: [
+              _LanguageSelector(ref: ref),
               _SettingsSwitch(
                 icon: Icons.access_time,
                 title: '24-Hour Format',
@@ -528,8 +530,8 @@ class SettingsScreen extends ConsumerWidget {
             ),
             const Divider(height: 1),
             ListTile(
-              title: const Text("Shafi'i, Maliki, Hanbali"),
-              subtitle: const Text('Standard Asr time (shadow equals object)'),
+              title: Text(context.l10n.madhab0),
+              subtitle: Text(context.l10n.madhab0Desc),
               trailing: settings.madhab == 0
                   ? const Icon(Icons.check, color: AppColors.black)
                   : null,
@@ -541,8 +543,8 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
             ListTile(
-              title: const Text('Hanafi'),
-              subtitle: const Text('Later Asr time (shadow equals twice object)'),
+              title: Text(context.l10n.madhab1),
+              subtitle: Text(context.l10n.madhab1Desc),
               trailing: settings.madhab == 1
                   ? const Icon(Icons.check, color: AppColors.black)
                   : null,
@@ -627,7 +629,7 @@ class SettingsScreen extends ConsumerWidget {
             ),
             const Divider(height: 1),
             ListTile(
-              title: const Text('Monday'),
+              title: Text(context.l10n.monday),
               trailing: settings.weekStartDay == 1
                   ? const Icon(Icons.check, color: AppColors.black)
                   : null,
@@ -639,7 +641,7 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
             ListTile(
-              title: const Text('Sunday'),
+              title: Text(context.l10n.sunday),
               trailing: settings.weekStartDay == 7
                   ? const Icon(Icons.check, color: AppColors.black)
                   : null,
@@ -651,7 +653,7 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
             ListTile(
-              title: const Text('Saturday'),
+              title: Text(context.l10n.saturday),
               trailing: settings.weekStartDay == 6
                   ? const Icon(Icons.check, color: AppColors.black)
                   : null,
@@ -673,7 +675,7 @@ class SettingsScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Clear All Data?'),
+        title: Text(context.l10n.clearAllData),
         content: const Text(
           'This will permanently delete all your prayers, tasks, and settings. This action cannot be undone.',
         ),
@@ -689,7 +691,7 @@ class SettingsScreen extends ConsumerWidget {
               if (context.mounted) {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('All data cleared')),
+                  const SnackBar(content: Text('تم حذف جميع البيانات')),
                 );
               }
             },
@@ -712,7 +714,7 @@ class SettingsScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Backup Data'),
+        title: Text(context.l10n.backupData),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -745,7 +747,7 @@ class SettingsScreen extends ConsumerWidget {
               }
             },
             icon: const Icon(Icons.share, size: 18),
-            label: const Text('Export & Share'),
+            label: Text(context.l10n.exportShare),
           ),
         ],
       ),
@@ -769,7 +771,7 @@ class SettingsScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Restore Data'),
+        title: Text(context.l10n.restoreData),
         content: const Text(
           'Select a backup file to restore. This will add the backup data to your current data (existing data will not be deleted).',
         ),
@@ -784,7 +786,7 @@ class SettingsScreen extends ConsumerWidget {
               await _pickAndRestoreBackup(context, ref);
             },
             icon: const Icon(Icons.folder_open, size: 18),
-            label: const Text('Select File'),
+            label: Text(context.l10n.selectFile),
           ),
         ],
       ),
@@ -1017,7 +1019,7 @@ class _LocationPickerSheetState extends ConsumerState<_LocationPickerSheet> {
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Icon(Icons.my_location),
-                label: const Text('Use Current Location'),
+                label: Text(context.l10n.useCurrentLocation),
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 48),
                 ),
@@ -1615,6 +1617,90 @@ class _QiyamWakeTimeSelector extends ConsumerWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+/// Language selector widget
+class _LanguageSelector extends ConsumerWidget {
+  final WidgetRef ref;
+  
+  const _LanguageSelector({required this.ref});
+
+  void _showLanguagePicker(BuildContext context) {
+    final currentLocale = ref.read(localeProvider);
+    
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(AppDimensions.paddingLg),
+              child: Text(
+                context.l10n.language,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const Divider(height: 1),
+            // English
+            ListTile(
+              leading: const Text(
+                '🇬🇧',
+                style: TextStyle(fontSize: 24),
+              ),
+              title: const Text('English'),
+              trailing: currentLocale.languageCode == 'en'
+                  ? const Icon(Icons.check, color: AppColors.black)
+                  : null,
+              onTap: () {
+                ref.read(localeProvider.notifier).setLocale(const Locale('en'));
+                Navigator.pop(context);
+              },
+            ),
+            // Arabic
+            ListTile(
+              leading: const Text(
+                '🇸🇦',
+                style: TextStyle(fontSize: 24),
+              ),
+              title: const Text('العربية'),
+              subtitle: const Text('Arabic'),
+              trailing: currentLocale.languageCode == 'ar'
+                  ? const Icon(Icons.check, color: AppColors.black)
+                  : null,
+              onTap: () {
+                ref.read(localeProvider.notifier).setLocale(const Locale('ar'));
+                Navigator.pop(context);
+              },
+            ),
+            const SizedBox(height: AppDimensions.spacingMd),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final locale = ref.watch(localeProvider);
+    final languageName = locale.languageCode == 'en' 
+        ? 'English' 
+        : 'العربية (Arabic)';
+    
+    return _SettingsTile(
+      icon: Icons.language,
+      title: context.l10n.language,
+      subtitle: languageName,
+      onTap: () => _showLanguagePicker(context),
     );
   }
 }

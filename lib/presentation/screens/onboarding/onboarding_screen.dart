@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../domain/providers/settings_provider.dart';
 import '../../../data/services/location_service.dart';
 import '../../../data/services/notification_service.dart';
@@ -236,7 +237,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         const SizedBox(height: 16),
         TextButton(
           onPressed: _nextPage,
-          child: const Text('Skip for now'),
+          child: Text(context.l10n.skipForNow),
         ),
       ],
     );
@@ -335,11 +336,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             child: _currentPage < 2
                 ? ElevatedButton(
                     onPressed: _nextPage,
-                    child: const Text('Next'),
+                    child: Text(context.l10n.next),
                   )
                 : ElevatedButton(
                     onPressed: _completeOnboarding,
-                    child: const Text('Get Started'),
+                    child: Text(context.l10n.getStarted),
                   ),
           ),
         ],

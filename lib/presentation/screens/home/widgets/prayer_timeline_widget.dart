@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../../../core/extensions/localization_extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../data/models/task.dart';
 import '../../../../data/services/free_time_service.dart';
@@ -837,16 +838,16 @@ class PrayerTimelineWidget extends ConsumerWidget {
           return await showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
-              title: const Text('Delete Task'),
+              title: Text(context.l10n.deleteTask),
               content: Text('Delete "${task.title}"?'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context, false),
-                  child: const Text('Cancel'),
+                  child: Text(context.l10n.cancel),
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context, true),
-                  child: const Text('Delete', style: TextStyle(color: AppColors.error)),
+                  child: Text(context.l10n.delete, style: const TextStyle(color: AppColors.error)),
                 ),
               ],
             ),

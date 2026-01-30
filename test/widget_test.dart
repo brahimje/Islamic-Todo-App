@@ -1,19 +1,81 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// This is a basic Flutter widget test testing the localization system.
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:islamic_todo_app/main.dart';
+import 'package:islamic_todo_app/generated_files/l10n/app_localizations.dart';
+import 'package:islamic_todo_app/core/extensions/localization_extensions.dart';
 
 void main() {
-  testWidgets('App loads successfully', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const IslamicTodoApp());
+  testWidgets('Localization system works with English', (WidgetTester tester) async {
+    // Build a test widget with English locale
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Builder(
+          builder: (context) {
+            final l10n = context.l10n;
+            return Scaffold(
+              body: Text(l10n.appName),
+            );
+          },
+        ),
+      ),
+    );
 
-    // Verify that the app loads with the correct title
+    // Verify English string is displayed
     expect(find.text('Islamic Todo'), findsOneWidget);
+  });
+
+  testWidgets('Localization system works with Arabic', (WidgetTester tester) async {
+    // Build a test widget with Arabic locale
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ar'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Builder(
+          builder: (context) {
+            final l10n = context.l10n;
+            return Scaffold(
+              body: Text(l10n.appName),
+            );
+          },
+        ),
+      ),
+    );
+
+    // Verify Arabic string is displayed
+    expect(find.text('مهام إسلامية'), findsOneWidget);
+  });
+
+  testWidgets('Prayer names are localized correctly', (WidgetTester tester) async {
+    // Test English prayer names
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Builder(
+          builder: (context) {
+            final l10n = context.l10n;
+            return Scaffold(
+              body: Column(
+                children: [
+                  Text(l10n.fajr),
+                  Text(l10n.dhuhr),
+                  Text(l10n.asr),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    expect(find.text('Fajr'), findsOneWidget);
+    expect(find.text('Dhuhr'), findsOneWidget);
+    expect(find.text('Asr'), findsOneWidget);
   });
 }

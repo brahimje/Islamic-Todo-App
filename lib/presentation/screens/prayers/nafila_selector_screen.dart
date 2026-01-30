@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/prayer_data.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../domain/providers/nafila_provider.dart';
 
 /// Screen for selecting which Nafila prayers to track
@@ -19,7 +20,7 @@ class NafilaSelectorScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nafila Prayers'),
+        title: Text(context.l10n.nafilaPrayers),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(

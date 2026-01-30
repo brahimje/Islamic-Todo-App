@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../core/extensions/localization_extensions.dart';
 import '../../../data/models/task.dart';
 import '../../../data/services/free_time_service.dart';
 import '../../../domain/providers/free_time_provider.dart';
@@ -43,27 +44,34 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
   // New fields
   bool _isReligious = false;
   String? _selectedPrayerBlockId;
+  
+  // Recurring task fields
+  bool _isRecurring = false;
+  String? _recurringPattern; // 'daily', 'weekly', 'monthly'
+  DateTime? _recurringEndDate;
 
-  // Normal task categories
-  final List<String> _normalCategories = [
-    AppStrings.categoryWork,
-    AppStrings.categoryPersonal,
-    AppStrings.categoryFamily,
-    AppStrings.categoryHealth,
-    AppStrings.categoryLearning,
-    AppStrings.categoryOther,
-  ];
+  List<String> _getNormalCategories(BuildContext context) {
+    return [
+      context.l10n.categoryWork,
+      context.l10n.categoryPersonal,
+      context.l10n.categoryFamily,
+      context.l10n.categoryHealth,
+      context.l10n.categoryLearning,
+      context.l10n.categoryOther,
+    ];
+  }
 
-  // Religious task categories
-  final List<String> _religiousCategories = [
-    'Quran Reading',
-    'Dhikr',
-    'Nafila',
-    'Islamic Study',
-    'Dua',
-    'Charity',
-    'Other Ibadah',
-  ];
+  List<String> _getReligiousCategories() {
+    return [
+      'Quran Reading',
+      'Dhikr',
+      'Nafila',
+      'Islamic Study',
+      'Dua',
+      'Charity',
+      'Other Ibadah',
+    ];
+  }
 
   @override
   void initState() {
@@ -97,6 +105,9 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
     _hasNotification = _existingTask!.hasNotification;
     _isReligious = _existingTask!.isReligious;
     _selectedPrayerBlockId = _existingTask!.prayerBlockId;
+    _isRecurring = _existingTask!.isRecurring;
+    _recurringPattern = _existingTask!.recurringPattern;
+    _recurringEndDate = _existingTask!.recurringEndDate;
     
     if (_existingTask!.scheduledTime != null) {
       _scheduledTime = TimeOfDay.fromDateTime(_existingTask!.scheduledTime!);
@@ -158,7 +169,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.isEditing ? AppStrings.editTask : AppStrings.addTask),
+        title: Text(widget.isEditing ? context.l10n.editTask : context.l10n.addTask),
         actions: [
           if (widget.isEditing)
             IconButton(
@@ -183,15 +194,15 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
             TextFormField(
               controller: _titleController,
               decoration: InputDecoration(
-                labelText: AppStrings.taskTitle,
+                labelText: context.l10n.taskTitle,
                 hintText: _isReligious 
-                    ? 'e.g., Read Surah Al-Kahf'
-                    : 'What do you need to do?',
+                    ? context.l10n.taskTitleHint
+                    : context.l10n.taskDescriptionHint,
               ),
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Please enter a task title';
+                  return context.l10n.taskTitleEmpty;
                 }
                 return null;
               },
@@ -201,9 +212,9 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
             // Description
             TextFormField(
               controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: AppStrings.taskDescription,
-                hintText: 'Add details...',
+              decoration: InputDecoration(
+                labelText: context.l10n.taskDescription,
+                hintText: context.l10n.addDetailsHint,
               ),
               maxLines: 3,
               textCapitalization: TextCapitalization.sentences,
@@ -287,31 +298,31 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
 
             // Priority
             Text(
-              AppStrings.taskPriority,
+              context.l10n.taskPriority,
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: AppDimensions.spacingSm),
             Row(
               children: [
-                _buildPriorityChip(0, AppStrings.priorityLow, AppColors.gray400),
+                _buildPriorityChip(0, context.l10n.priorityLow, AppColors.gray400),
                 const SizedBox(width: AppDimensions.spacingSm),
-                _buildPriorityChip(1, AppStrings.priorityMedium, AppColors.warning),
+                _buildPriorityChip(1, context.l10n.priorityMedium, AppColors.warning),
                 const SizedBox(width: AppDimensions.spacingSm),
-                _buildPriorityChip(2, AppStrings.priorityHigh, AppColors.error),
+                _buildPriorityChip(2, context.l10n.priorityHigh, AppColors.error),
               ],
             ),
             const SizedBox(height: AppDimensions.spacingLg),
 
             // Category
             Text(
-              AppStrings.taskCategory,
+              context.l10n.taskCategory,
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: AppDimensions.spacingSm),
             Wrap(
               spacing: AppDimensions.spacingSm,
               runSpacing: AppDimensions.spacingSm,
-              children: (_isReligious ? _religiousCategories : _normalCategories).map((cat) {
+              children: (_isReligious ? _getReligiousCategories() : _getNormalCategories(context)).map((cat) {
                 final isSelected = _category == cat;
                 return ChoiceChip(
                   label: Text(cat),
@@ -326,6 +337,10 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
                 );
               }).toList(),
             ),
+            const SizedBox(height: AppDimensions.spacingLg),
+
+            // Recurring task section
+            _buildRecurringSection(context),
             const SizedBox(height: AppDimensions.spacingLg),
 
             // Estimated time with availability indicator
@@ -364,7 +379,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
             // Save button - uses unified validation
             ElevatedButton(
               onPressed: _canSave(blocks, tasks) ? _saveTask : null,
-              child: Text(widget.isEditing ? 'Update Task' : AppStrings.saveTask),
+              child: Text(widget.isEditing ? context.l10n.updateTask : context.l10n.saveTask),
             ),
             const SizedBox(height: AppDimensions.spacingXl),
           ],
@@ -940,6 +955,245 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
     }
   }
 
+  /// Build recurring task section
+  Widget _buildRecurringSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppDimensions.paddingMd),
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.gray200),
+        borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Recurring toggle
+          Row(
+            children: [
+              const Icon(Icons.repeat, size: 22),
+              const SizedBox(width: AppDimensions.spacingMd),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Repeat this task',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    if (_isRecurring && _recurringPattern != null)
+                      Text(
+                        _getRecurringDescription(),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: AppColors.gray600,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              Switch(
+                value: _isRecurring,
+                onChanged: (value) {
+                  setState(() {
+                    _isRecurring = value;
+                    if (!value) {
+                      _recurringPattern = null;
+                      _recurringEndDate = null;
+                    }
+                  });
+                },
+                activeColor: AppColors.black,
+              ),
+            ],
+          ),
+          
+          // Show pattern selector when recurring is enabled
+          if (_isRecurring) ...[
+            const SizedBox(height: AppDimensions.spacingMd),
+            const Divider(),
+            const SizedBox(height: AppDimensions.spacingMd),
+            
+            // Pattern selector
+            Text(
+              'Repeat pattern',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: AppDimensions.spacingSm),
+            Wrap(
+              spacing: AppDimensions.spacingSm,
+              runSpacing: AppDimensions.spacingSm,
+              children: [
+                _buildPatternChip('daily', 'Daily', Icons.today),
+                _buildPatternChip('weekly', 'Weekly', Icons.calendar_view_week),
+                _buildPatternChip('monthly', 'Monthly', Icons.calendar_month),
+              ],
+            ),
+            
+            // End date picker (optional)
+            const SizedBox(height: AppDimensions.spacingMd),
+            const Divider(),
+            const SizedBox(height: AppDimensions.spacingMd),
+            
+            Text(
+              'End date (optional)',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: AppDimensions.spacingSm),
+            InkWell(
+              onTap: () => _selectRecurringEndDate(context),
+              borderRadius: BorderRadius.circular(AppDimensions.radiusSm),
+              child: Container(
+                padding: const EdgeInsets.all(AppDimensions.paddingMd),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.gray200),
+                  borderRadius: BorderRadius.circular(AppDimensions.radiusSm),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.event,
+                      size: 20,
+                      color: AppColors.gray600,
+                    ),
+                    const SizedBox(width: AppDimensions.spacingSm),
+                    Expanded(
+                      child: Text(
+                        _recurringEndDate != null
+                            ? DateFormat('MMM dd, yyyy').format(_recurringEndDate!)
+                            : 'No end date',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ),
+                    if (_recurringEndDate != null)
+                      IconButton(
+                        icon: Icon(Icons.clear, size: 18, color: AppColors.gray600),
+                        onPressed: () {
+                          setState(() => _recurringEndDate = null);
+                        },
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            
+            // Preview next occurrences
+            if (_recurringPattern != null && _scheduledDate != null) ...[
+              const SizedBox(height: AppDimensions.spacingMd),
+              Container(
+                padding: const EdgeInsets.all(AppDimensions.paddingSm),
+                decoration: BoxDecoration(
+                  color: AppColors.gray50,
+                  borderRadius: BorderRadius.circular(AppDimensions.radiusSm),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.info_outline, size: 16, color: AppColors.gray600),
+                        const SizedBox(width: AppDimensions.spacingXs),
+                        Text(
+                          'Next occurrences:',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: AppColors.gray600,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppDimensions.spacingXs),
+                    ..._getNextOccurrences().map((date) => Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 2),
+                      child: Text(
+                        DateFormat('EEE, MMM dd, yyyy').format(date),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: AppColors.gray700,
+                        ),
+                      ),
+                    )),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPatternChip(String pattern, String label, IconData icon) {
+    final isSelected = _recurringPattern == pattern;
+    return ChoiceChip(
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 16),
+          const SizedBox(width: 4),
+          Text(label),
+        ],
+      ),
+      selected: isSelected,
+      onSelected: (selected) {
+        setState(() => _recurringPattern = selected ? pattern : null);
+      },
+      selectedColor: AppColors.black,
+      labelStyle: TextStyle(
+        color: isSelected ? AppColors.white : AppColors.black,
+      ),
+    );
+  }
+
+  void _selectRecurringEndDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _recurringEndDate ?? DateTime.now().add(const Duration(days: 30)),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+    );
+    if (picked != null) {
+      setState(() => _recurringEndDate = picked);
+    }
+  }
+
+  String _getRecurringDescription() {
+    if (_recurringPattern == null) return '';
+    
+    String desc = 'Repeats ${_recurringPattern}';
+    if (_recurringEndDate != null) {
+      desc += ' until ${DateFormat('MMM dd').format(_recurringEndDate!)}';
+    }
+    return desc;
+  }
+
+  List<DateTime> _getNextOccurrences() {
+    if (_scheduledDate == null || _recurringPattern == null) return [];
+    
+    List<DateTime> occurrences = [];
+    DateTime current = _scheduledDate!;
+    
+    for (int i = 0; i < 3; i++) {
+      switch (_recurringPattern) {
+        case 'daily':
+          current = current.add(const Duration(days: 1));
+          break;
+        case 'weekly':
+          current = current.add(const Duration(days: 7));
+          break;
+        case 'monthly':
+          current = DateTime(current.year, current.month + 1, current.day);
+          break;
+      }
+      
+      if (_recurringEndDate != null && current.isAfter(_recurringEndDate!)) {
+        break;
+      }
+      
+      occurrences.add(current);
+    }
+    
+    return occurrences;
+  }
+
   /// Validate using the unified time management system
   TaskSchedulingValidation _validateTask(List<FreeTimeBlock> blocks, List<Task> tasks) {
     return validateTaskScheduling(
@@ -1014,6 +1268,9 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
         createdAt: _existingTask?.createdAt ?? DateTime.now(),
         isReligious: _isReligious,
         prayerBlockId: _selectedPrayerBlockId,
+        isRecurring: _isRecurring,
+        recurringPattern: _recurringPattern,
+        recurringEndDate: _recurringEndDate,
       );
 
       if (widget.isEditing) {
@@ -1030,12 +1287,12 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Task'),
-        content: const Text('Are you sure you want to delete this task?'),
+        title: Text(context.l10n.deleteTaskConfirm),
+        content: Text(context.l10n.deleteTaskMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text(AppStrings.cancel),
+            child: Text(context.l10n.cancel)
           ),
           TextButton(
             onPressed: () {
@@ -1044,7 +1301,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
               Navigator.pop(context); // Go back
             },
             child: Text(
-              AppStrings.delete,
+              context.l10n.delete,
               style: TextStyle(color: AppColors.error),
             ),
           ),
