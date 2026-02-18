@@ -371,6 +371,49 @@ class NotificationService {
     }
   }
 
+  /// Schedule daily Adhkar reminders (Morning and Evening)
+  Future<void> scheduleDailyAdhkarNotifications({
+    required bool showMorningReminder,
+    required bool showEveningReminder,
+    required int morningHour,
+    required int eveningHour,
+  }) async {
+    // Cancel existing adhkar notifications first
+    await cancelAllAdhkarNotifications();
+
+    final now = DateTime.now();
+    
+    // Schedule morning adhkar if enabled
+    if (showMorningReminder) {
+      var morningTime = DateTime(now.year, now.month, now.day, morningHour, 0);
+      
+      // If the time has already passed today, schedule for tomorrow
+      if (morningTime.isBefore(now)) {
+        morningTime = morningTime.add(const Duration(days: 1));
+      }
+      
+      await scheduleAdhkarNotification(
+        adhkarType: 'sabah',
+        scheduledTime: morningTime,
+      );
+    }
+
+    // Schedule evening adhkar if enabled
+    if (showEveningReminder) {
+      var eveningTime = DateTime(now.year, now.month, now.day, eveningHour, 0);
+      
+      // If the time has already passed today, schedule for tomorrow
+      if (eveningTime.isBefore(now)) {
+        eveningTime = eveningTime.add(const Duration(days: 1));
+      }
+      
+      await scheduleAdhkarNotification(
+        adhkarType: 'masa',
+        scheduledTime: eveningTime,
+      );
+    }
+  }
+
   /// Schedule a task reminder notification
   /// Differentiates between religious and normal tasks
   Future<void> scheduleTaskNotification({

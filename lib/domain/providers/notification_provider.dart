@@ -42,6 +42,14 @@ final notificationManagerProvider = FutureProvider<void>((ref) async {
     isha: prayerTimes.isha,
     minutesBefore: settings.defaultReminderMinutes,
   );
+  
+  // Schedule daily Adhkar reminders
+  await notificationService.scheduleDailyAdhkarNotifications(
+    showMorningReminder: settings.showMorningAdhkarReminder,
+    showEveningReminder: settings.showEveningAdhkarReminder,
+    morningHour: settings.morningAdhkarHour,
+    eveningHour: settings.eveningAdhkarHour,
+  );
 });
 
 /// Schedule notifications manually (called after settings change)
@@ -52,6 +60,7 @@ Future<void> scheduleNotificationsFromSettings(WidgetRef ref) async {
   
   if (!settings.notificationsEnabled) {
     await notificationService.cancelAllPrayerNotifications();
+    await notificationService.cancelAllAdhkarNotifications();
     return;
   }
   
@@ -62,6 +71,14 @@ Future<void> scheduleNotificationsFromSettings(WidgetRef ref) async {
     maghrib: prayerTimes.maghrib,
     isha: prayerTimes.isha,
     minutesBefore: settings.defaultReminderMinutes,
+  );
+  
+  // Schedule daily Adhkar reminders
+  await notificationService.scheduleDailyAdhkarNotifications(
+    showMorningReminder: settings.showMorningAdhkarReminder,
+    showEveningReminder: settings.showEveningAdhkarReminder,
+    morningHour: settings.morningAdhkarHour,
+    eveningHour: settings.eveningAdhkarHour,
   );
 }
 

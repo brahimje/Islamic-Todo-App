@@ -41,6 +41,12 @@ class SettingsNotifier extends StateNotifier<UserSettings> {
     bool? showCompletedTasks,
     bool? autoArchiveCompletedTasks,
     int? weekStartDay,
+    bool? showMorningAdhkarReminder,
+    bool? showEveningAdhkarReminder,
+    bool? showAfterPrayerAdhkarReminder,
+    bool? showSleepAdhkarReminder,
+    int? morningAdhkarHour,
+    int? eveningAdhkarHour,
   }) async {
     final updated = state.copyWith(
       locationName: locationName,
@@ -61,6 +67,12 @@ class SettingsNotifier extends StateNotifier<UserSettings> {
       showCompletedTasks: showCompletedTasks,
       autoArchiveCompletedTasks: autoArchiveCompletedTasks,
       weekStartDay: weekStartDay,
+      showMorningAdhkarReminder: showMorningAdhkarReminder,
+      showEveningAdhkarReminder: showEveningAdhkarReminder,
+      showAfterPrayerAdhkarReminder: showAfterPrayerAdhkarReminder,
+      showSleepAdhkarReminder: showSleepAdhkarReminder,
+      morningAdhkarHour: morningAdhkarHour,
+      eveningAdhkarHour: eveningAdhkarHour,
     );
     await _hiveService.settingsBox.put('default', updated);
     state = updated;
@@ -97,6 +109,24 @@ class SettingsNotifier extends StateNotifier<UserSettings> {
 
   Future<void> updateLanguage(String language) async {
     await updateSettings(language: language);
+  }
+
+  Future<void> updateMorningAdhkarReminder(bool enabled) async {
+    await updateSettings(showMorningAdhkarReminder: enabled);
+  }
+
+  Future<void> updateEveningAdhkarReminder(bool enabled) async {
+    await updateSettings(showEveningAdhkarReminder: enabled);
+  }
+
+  Future<void> updateAdhkarTimes({
+    required int morningHour,
+    required int eveningHour,
+  }) async {
+    await updateSettings(
+      morningAdhkarHour: morningHour,
+      eveningAdhkarHour: eveningHour,
+    );
   }
 }
 

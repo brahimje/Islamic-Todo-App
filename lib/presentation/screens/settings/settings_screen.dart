@@ -14,6 +14,7 @@ import '../../../domain/providers/prayer_provider.dart';
 import '../../../domain/providers/free_time_provider.dart';
 import '../../../domain/providers/backup_provider.dart';
 import '../../../domain/providers/locale_provider.dart';
+import '../../../domain/providers/notification_provider.dart';
 
 /// Settings screen
 class SettingsScreen extends ConsumerWidget {
@@ -172,6 +173,7 @@ class SettingsScreen extends ConsumerWidget {
                     ref.read(settingsProvider.notifier).saveSettings(
                       settings.copyWith(showMorningAdhkarReminder: value),
                     );
+                    scheduleNotificationsFromSettings(ref);
                   },
                 ),
                 if (settings.showMorningAdhkarReminder)
@@ -189,6 +191,7 @@ class SettingsScreen extends ConsumerWidget {
                     ref.read(settingsProvider.notifier).saveSettings(
                       settings.copyWith(showEveningAdhkarReminder: value),
                     );
+                    scheduleNotificationsFromSettings(ref);
                   },
                 ),
                 if (settings.showEveningAdhkarReminder)
@@ -504,6 +507,8 @@ class SettingsScreen extends ConsumerWidget {
                           settings.copyWith(eveningAdhkarHour: hour),
                         );
                       }
+                      // Reschedule notifications with new time
+                      scheduleNotificationsFromSettings(ref);
                       Navigator.pop(context);
                     },
                   );
