@@ -57,78 +57,95 @@ class DailyResetService {
           continue;
         }
 
-        // For daily recurring tasks that were completed, reset them
-        if (task.recurringPattern == 'daily' && task.state == TaskState.completed) {
-          // Check if the last reset was yesterday (task has already been reset today)
-          final lastReset = task.lastResetDate;
-          if (lastReset != null) {
-            if (lastReset.year == now.year &&
-                lastReset.month == now.month &&
-                lastReset.day == now.day) {
-              // Already reset today, skip
-              continue;
-            }
-          }
+        // Skip if not active (e.g., archived tasks)
+        if (task.state != TaskState.active && 
+            task.state != TaskState.completed && 
+            task.state != TaskState.skipped) {
+          continue;
+        }
 
-          // Generate next occurrence
+        final scheduledTime = task.scheduledTime;
+        if (scheduledTime == null) continue;
+
+        // Determine if we should generate next occurrence
+        bool shouldGenerateNext = false;
+        final lastReset = task.lastResetDate;
+
+        switch (task.recurringPattern) {
+          case 'daily':
+            // Generate next occurrence if:
+            // 1. Task was completed yesterday or earlier
+            // 2. Task was skipped yesterday or earlier
+            // 3. It's a new day and we haven't reset yet
+            if (task.state == TaskState.completed || task.state == TaskState.skipped) {
+              if (lastReset == null) {
+                shouldGenerateNext = true;
+              } else {
+                // Check if last reset was before today
+                shouldGenerateNext = lastReset.year != now.year ||
+                    lastReset.month != now.month ||
+                    lastReset.day != now.day;
+              }
+            }
+            break;
+
+          case 'weekly':
+            // Generate if it's the same weekday and at least 7 days have passed
+            if (task.state == TaskState.completed || task.state == TaskState.skipped) {
+              if (scheduledTime.weekday == now.weekday) {
+                if (lastReset == null) {
+                  // First time - check if original scheduled date was at least 7 days ago
+                  final daysSinceScheduled = now.difference(
+                    DateTime(scheduledTime.year, scheduledTime.month, scheduledTime.day)
+                  ).inDays;
+                  shouldGenerateNext = daysSinceScheduled >= 7;
+                } else {
+                  // Check if at least 7 days since last reset
+                  final daysSinceReset = now.difference(
+                    DateTime(lastReset.year, lastReset.month, lastReset.day)
+                  ).inDays;
+                  shouldGenerateNext = daysSinceReset >= 7;
+                }
+              }
+            }
+            break;
+
+          case 'monthly':
+            // Generate if it's the same day of month and at least 28 days have passed
+            if (task.state == TaskState.completed || task.state == TaskState.skipped) {
+              if (scheduledTime.day == now.day) {
+                if (lastReset == null) {
+                  // First time - check if original scheduled date was at least 28 days ago
+                  final daysSinceScheduled = now.difference(
+                    DateTime(scheduledTime.year, scheduledTime.month, scheduledTime.day)
+                  ).inDays;
+                  shouldGenerateNext = daysSinceScheduled >= 28;
+                } else {
+                  // Check if at least 28 days since last reset
+                  final daysSinceReset = now.difference(
+                    DateTime(lastReset.year, lastReset.month, lastReset.day)
+                  ).inDays;
+                  shouldGenerateNext = daysSinceReset >= 28;
+                }
+              }
+            }
+            break;
+        }
+
+        // Generate next occurrence if needed
+        if (shouldGenerateNext) {
           try {
             final nextTask = task.generateNextOccurrence();
             newTasks.add(nextTask);
             await _tasksBox.put(nextTask.id, nextTask);
 
-            // Update original task to reflect last reset date
-            final updatedOriginal = task.copyWith(lastResetDate: now);
+            // Update original task to mark it as reset
+            final updatedOriginal = task.copyWith(
+              lastResetDate: now,
+            );
             await _tasksBox.put(task.id, updatedOriginal);
           } catch (e) {
             print('Error generating next occurrence for task ${task.id}: $e');
-          }
-        }
-
-        // Reactivate skipped daily tasks that are today
-        if (task.recurringPattern == 'daily' &&
-            task.state == TaskState.skipped &&
-            task.scheduledTime != null) {
-          final lastReset = task.lastResetDate;
-          if (lastReset == null ||
-              lastReset.year != now.year ||
-              lastReset.month != now.month ||
-              lastReset.day != now.day) {
-            final reactivated = task.copyWith(
-              state: TaskState.active,
-              lastResetDate: now,
-            );
-            await _tasksBox.put(task.id, reactivated);
-          }
-        }
-
-        // For weekly/monthly, check if they're due again
-        if ((task.recurringPattern == 'weekly' ||
-                task.recurringPattern == 'monthly') &&
-            task.state == TaskState.completed &&
-            task.scheduledTime != null) {
-          final scheduled = task.scheduledTime!;
-          bool isDueAgain = false;
-
-          if (task.recurringPattern == 'weekly') {
-            // Check if it's the same day of the week and at least 7 days have passed
-            final daysDiff = now.difference(DateTime(
-                    scheduled.year, scheduled.month, scheduled.day))
-                .inDays;
-            isDueAgain = daysDiff >= 7 && scheduled.weekday == now.weekday;
-          } else if (task.recurringPattern == 'monthly') {
-            // Check if the day of month matches and at least 30 days have passed
-            isDueAgain = scheduled.day == now.day &&
-                now.difference(scheduled).inDays >= 30;
-          }
-
-          if (isDueAgain) {
-            try {
-              final nextTask = task.generateNextOccurrence();
-              newTasks.add(nextTask);
-              await _tasksBox.put(nextTask.id, nextTask);
-            } catch (e) {
-              print('Error generating next occurrence for task ${task.id}: $e');
-            }
           }
         }
       }

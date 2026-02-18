@@ -67,14 +67,33 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     try {
       final notificationService = NotificationService();
       await notificationService.initialize();
+      
+      // Request notification permissions
       final granted = await notificationService.requestPermissions();
       
       if (granted) {
         await ref.read(settingsProvider.notifier).updateSettings(
           notificationsEnabled: true,
         );
+        
+        // Also request battery optimization exemption for reliable notifications
+        await notificationService.requestBatteryOptimizationExemption();
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Notification permission is required for prayer reminders'),
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
       }
     } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error enabling notifications: $e')),
+        );
+      }
     }
     
     setState(() => _isLoading = false);

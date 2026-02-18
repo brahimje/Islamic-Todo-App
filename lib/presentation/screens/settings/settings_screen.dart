@@ -8,6 +8,7 @@ import '../../../core/extensions/localization_extensions.dart';
 import '../../../data/services/location_service.dart';
 import '../../../data/services/prayer_time_service.dart';
 import '../../../data/services/free_time_service.dart';
+import '../../../data/services/notification_service.dart';
 import '../../../domain/providers/settings_provider.dart';
 import '../../../domain/providers/prayer_provider.dart';
 import '../../../domain/providers/free_time_provider.dart';
@@ -133,6 +134,13 @@ class SettingsScreen extends ConsumerWidget {
                 onChanged: (value) {
                   ref.read(settingsProvider.notifier).updateNotificationsEnabled(value);
                 },
+              ),
+              // Test Notification Button
+              _SettingsTile(
+                icon: Icons.notification_add_outlined,
+                title: 'Test Notifications',
+                subtitle: 'Send a test notification to verify setup',
+                onTap: () => _testNotification(context),
               ),
               if (settings.notificationsEnabled) ...[
                 // Prayer Reminders
@@ -372,6 +380,78 @@ class SettingsScreen extends ConsumerWidget {
     final period = hour >= 12 ? 'PM' : 'AM';
     final displayHour = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour);
     return '$displayHour:00 $period';
+  }
+
+  void _testNotification(BuildContext context) async {
+    try {
+      final notificationService = NotificationService();
+      await notificationService.initialize();
+      
+      // Check if all permissions are granted
+      final hasPermissions = await notificationService.hasAllRequiredPermissions();
+      
+      if (!hasPermissions) {
+        // Show permission request dialog
+        if (context.mounted) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Permissions Required'),
+              content: const Text(
+                'Notifications require additional permissions:\n\n'
+                '• Notification permission\n'
+                '• Exact alarm permission (Android 12+)\n'
+                '\nWould you like to grant these permissions now?'
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancel'),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    final granted = await notificationService.requestPermissions();
+                    if (granted && context.mounted) {
+                      _testNotification(context); // Retry after granting permissions
+                    }
+                  },
+                  child: const Text('Grant Permissions'),
+                ),
+              ],
+            ),
+          );
+        }
+        return;
+      }
+      
+      // Send test notification
+      await notificationService.showImmediateNotification(
+        title: '🕌 Test Notification',
+        body: 'Notifications are working correctly! May Allah bless you.',
+        type: NotificationType.prayer,
+      );
+      
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Test notification sent! Check your notification tray.'),
+            backgroundColor: Colors.green,
+            duration: Duration(seconds: 3),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
+    }
   }
 
   void _showAdhkarTimePicker(BuildContext context, WidgetRef ref, bool isMorning) {

@@ -198,30 +198,77 @@ class Task extends HiveObject {
       throw Exception('Cannot generate next occurrence for non-recurring task');
     }
 
+    // Check if recurring has expired
+    if (isRecurringExpired) {
+      throw Exception('Recurring task has expired');
+    }
+
     final now = DateTime.now();
+    final baseTime = scheduledTime ?? now;
+    final hour = baseTime.hour;
+    final minute = baseTime.minute;
+    
     DateTime nextScheduledTime;
 
     switch (recurringPattern) {
       case 'daily':
-        nextScheduledTime = DateTime(now.year, now.month, now.day + 1,
-            scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        // Next day at the same time
+        nextScheduledTime = DateTime(
+          now.year,
+          now.month,
+          now.day + 1,
+          hour,
+          minute,
+        );
         break;
+        
       case 'weekly':
-        nextScheduledTime = now.add(const Duration(days: 7));
-        nextScheduledTime = DateTime(nextScheduledTime.year, nextScheduledTime.month,
-            nextScheduledTime.day, scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        // Same day next week
+        final daysToAdd = 7;
+        final nextWeek = DateTime(baseTime.year, baseTime.month, baseTime.day)
+            .add(Duration(days: daysToAdd));
+        nextScheduledTime = DateTime(
+          nextWeek.year,
+          nextWeek.month,
+          nextWeek.day,
+          hour,
+          minute,
+        );
         break;
+        
       case 'monthly':
-        nextScheduledTime = DateTime(now.year, now.month + 1, now.day,
-            scheduledTime?.hour ?? 9, scheduledTime?.minute ?? 0);
+        // Same day next month
+        int nextMonth = baseTime.month + 1;
+        int nextYear = baseTime.year;
+        
+        if (nextMonth > 12) {
+          nextMonth = 1;
+          nextYear++;
+        }
+        
+        // Handle day overflow (e.g., Jan 31 -> Feb 28/29)
+        int day = baseTime.day;
+        final daysInNextMonth = DateTime(nextYear, nextMonth + 1, 0).day;
+        if (day > daysInNextMonth) {
+          day = daysInNextMonth;
+        }
+        
+        nextScheduledTime = DateTime(
+          nextYear,
+          nextMonth,
+          day,
+          hour,
+          minute,
+        );
         break;
+        
       default:
         throw Exception('Unknown recurring pattern: $recurringPattern');
     }
 
-    // Check if recurring has expired
-    if (isRecurringExpired) {
-      throw Exception('Recurring task has expired');
+    // Check if next occurrence would exceed end date
+    if (recurringEndDate != null && nextScheduledTime.isAfter(recurringEndDate!)) {
+      throw Exception('Next occurrence would exceed recurring end date');
     }
 
     return copyWith(

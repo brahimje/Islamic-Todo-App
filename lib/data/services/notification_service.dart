@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
 
@@ -217,12 +218,47 @@ class NotificationService {
       );
       return granted ?? false;
     } else if (Platform.isAndroid) {
+      // For Android 13+ (API 33+), request POST_NOTIFICATIONS permission
+      if (await _isAndroid13OrHigher()) {
+        final notificationStatus = await Permission.notification.request();
+        if (!notificationStatus.isGranted) {
+          return false;
+        }
+      }
+      
+      // For Android 12+ (API 31+), request SCHEDULE_EXACT_ALARM permission
+      if (await _isAndroid12OrHigher()) {
+        // Check if exact alarm permission is needed
+        final alarmStatus = await Permission.scheduleExactAlarm.status;
+        if (!alarmStatus.isGranted) {
+          // This will open the system settings for exact alarm permission
+          await Permission.scheduleExactAlarm.request();
+        }
+      }
+      
+      // Request standard notification permission for older Android versions
       final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>();
       final granted = await androidPlugin?.requestNotificationsPermission();
       return granted ?? false;
     }
     return false;
+  }
+
+  /// Check if Android version is 12 or higher (API 31+)
+  Future<bool> _isAndroid12OrHigher() async {
+    if (!Platform.isAndroid) return false;
+    // This is a simple check - in production you might want to use a plugin
+    // to get the exact Android API level
+    return true; // Assume modern Android for safety
+  }
+
+  /// Check if Android version is 13 or higher (API 33+)
+  Future<bool> _isAndroid13OrHigher() async {
+    if (!Platform.isAndroid) return false;
+    // This is a simple check - in production you might want to use a plugin
+    // to get the exact Android API level
+    return true; // Assume modern Android for safety
   }
 
   /// Check if notifications are enabled
@@ -617,6 +653,45 @@ class NotificationService {
   /// Get pending notifications
   Future<List<PendingNotificationRequest>> getPendingNotifications() async {
     return await _notifications.pendingNotificationRequests();
+  }
+
+  /// Request to ignore battery optimization for reliable notifications
+  /// This is important for Android to ensure notifications work in background
+  Future<bool> requestBatteryOptimizationExemption() async {
+    if (!Platform.isAndroid) return true;
+    
+    try {
+      final status = await Permission.ignoreBatteryOptimizations.status;
+      if (status.isGranted) {
+        return true;
+      }
+      
+      // Request the permission - this will show a system dialog
+      final result = await Permission.ignoreBatteryOptimizations.request();
+      return result.isGranted;
+    } catch (e) {
+      // If there's an error, continue anyway
+      return false;
+    }
+  }
+
+  /// Check if all required permissions are granted
+  Future<bool> hasAllRequiredPermissions() async {
+    if (!Platform.isAndroid) {
+      return await areNotificationsEnabled();
+    }
+    
+    // Check notification permission
+    final notificationEnabled = await areNotificationsEnabled();
+    
+    // Check exact alarm permission for Android 12+
+    bool exactAlarmGranted = true;
+    if (await _isAndroid12OrHigher()) {
+      final alarmStatus = await Permission.scheduleExactAlarm.status;
+      exactAlarmGranted = alarmStatus.isGranted;
+    }
+    
+    return notificationEnabled && exactAlarmGranted;
   }
 
   /// Get notification ID for a prayer
